@@ -3,3 +3,4 @@ __pycache__/
 *.fwsc
 *.ufw
 *.bin
+_site/

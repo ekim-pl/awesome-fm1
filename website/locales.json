@@ -1,0 +1,44 @@
+{
+  "en": {
+    "label": "English", "title": "New sounds start here.", "eyebrow": "COMMUNITY FIRMWARE DIRECTORY",
+    "intro": "Discover firmware for the M-VAVE FM-1. Find original publishers, explore new instruments, and help the community keep its sources up to date.",
+    "browse": "Explore firmware", "contribute": "Add a firmware source", "directory": "Firmware directory", "directoryText": "Original sources. Clear attribution. Evidence before compatibility claims.",
+    "project": "Project", "publisher": "Publisher", "version": "Version", "beta": "Beta", "unknown": "Hardware compatibility unknown", "verified": "See compatibility evidence", "source": "Publisher website", "package": "Firmware package", "repo": "Repository", "evidence": "Verification notes",
+    "shrub": "A wavetable synthesizer for the M-VAVE FM-1, with a browser editor.",
+    "notice": "Catalog inclusion is not a compatibility certification. A parsed package or matching hash does not prove that firmware will work on your hardware. Packages stay with their publishers; no firmware binaries are hosted here.",
+    "flasherTitle": "Discover here. Explore FM-1 Flasher.", "flasherText": "Awesome FM-1 curates firmware sources. FM-1 Flasher is the related experimental Android application for browsing firmware and installing it over USB MIDI. The additional Awesome FM-1 source is planned; multi-source support is not yet implemented. Listing a project here does not make it available or compatible in the app.",
+    "flasherLink": "FM-1 Flasher website", "flasherRepo": "App source code",
+    "joinTitle": "Found a firmware project?", "joinText": "Send a pull request with a package (pkg) URL or repository URL. You do not need to be the author or perform a hardware flash to contribute.",
+    "steps": ["Fork the repository and create a branch.", "Add submissions/project-name.md with the name, description, author, public HTTPS package or repository URL, version if known, and compatibility evidence or “unknown”.", "Open a focused pull request. Maintainers review the original source and help complete the catalog entry before publication."],
+    "rules": "Credit the author, respect distribution rights, disclose beta status, and keep claims factual. Do not upload firmware binaries. Full catalog contributions are also welcome.", "guidelines": "Read contribution guidelines",
+    "catalogTitle": "One catalog. Original downloads.", "catalogText": "Use the combined JSON endpoint in a client that supports this catalog profile. Individual publisher catalogs are alternatives; subscribing to both creates duplicate offers. Clients must block flashing when compatibility is unknown.", "catalogLink": "Open catalog.json", "schema": "Catalog schema", "skip": "Skip to content", "footer": "Community-maintained metadata for the M-VAVE FM-1. Firmware and artwork belong to their respective authors."
+  },
+  "pl": {
+    "label": "Polski", "title": "Nowe brzmienia zaczynają się tutaj.", "eyebrow": "SPOŁECZNOŚCIOWY KATALOG FIRMWARE",
+    "intro": "Odkrywaj firmware dla M-VAVE FM-1. Znajduj oryginalne źródła, poznawaj nowe instrumenty i pomagaj społeczności utrzymywać aktualny katalog.",
+    "browse": "Przeglądaj firmware", "contribute": "Zgłoś źródło firmware", "directory": "Katalog firmware", "directoryText": "Oryginalne źródła. Uznanie autorstwa. Deklaracje zgodności poparte dowodami.",
+    "project": "Projekt", "publisher": "Wydawca", "version": "Wersja", "beta": "Beta", "unknown": "Zgodność sprzętowa nieznana", "verified": "Sprawdź dowody zgodności", "source": "Strona wydawcy", "package": "Pakiet firmware", "repo": "Repozytorium", "evidence": "Notatki z weryfikacji",
+    "shrub": "Syntezator wavetable dla M-VAVE FM-1 z edytorem w przeglądarce.",
+    "notice": "Obecność w katalogu nie jest potwierdzeniem zgodności. Poprawna struktura pakietu lub zgodna suma kontrolna nie dowodzą działania na Twoim sprzęcie. Pakiety pozostają u wydawców; nie przechowujemy plików firmware.",
+    "flasherTitle": "Odkrywaj tutaj. Poznaj FM-1 Flasher.", "flasherText": "Awesome FM-1 gromadzi źródła firmware. Powiązany FM-1 Flasher to eksperymentalna aplikacja na Androida do przeglądania firmware i instalowania go przez USB MIDI. Dodatkowe źródło Awesome FM-1 jest planowane; obsługa wielu źródeł nie została jeszcze wdrożona. Wpis w katalogu nie oznacza dostępności ani zgodności w aplikacji.",
+    "flasherLink": "Strona FM-1 Flasher", "flasherRepo": "Kod źródłowy aplikacji",
+    "joinTitle": "Znasz projekt firmware?", "joinText": "Wyślij pull request z adresem pakietu (pkg) lub repozytorium. Nie musisz być autorem ani instalować firmware na sprzęcie, aby pomóc.",
+    "steps": ["Utwórz fork repozytorium i nową gałąź.", "Dodaj submissions/nazwa-projektu.md z nazwą, opisem, autorem, publicznym adresem HTTPS pakietu lub repozytorium, znaną wersją oraz dowodami zgodności albo oznaczeniem „unknown”.", "Otwórz PR dotyczący jednego projektu. Opiekunowie sprawdzą oryginalne źródło i pomogą uzupełnić wpis przed publikacją."],
+    "rules": "Podaj autora, szanuj prawa do dystrybucji, ujawnij status beta i opisuj fakty. Nie przesyłaj plików firmware. Możesz też przygotować kompletny wpis katalogu.", "guidelines": "Zasady współpracy",
+    "catalogTitle": "Jeden katalog. Oryginalne pliki.", "catalogText": "Używaj zbiorczego adresu JSON w kliencie obsługującym ten profil katalogu. Katalogi poszczególnych wydawców są alternatywą; subskrybowanie obu wariantów powiela oferty. Klient musi blokować instalację przy nieznanej zgodności.", "catalogLink": "Otwórz catalog.json", "schema": "Schemat katalogu", "skip": "Przejdź do treści", "footer": "Metadane dla M-VAVE FM-1 utrzymywane przez społeczność. Firmware i grafiki należą do ich autorów."
+  },
+  "zh-CN": {
+    "label": "简体中文", "title": "从这里，发现全新声音。", "eyebrow": "社区维护的固件目录",
+    "intro": "探索 M-VAVE FM-1 固件，查找原作者的发布来源，发现新的乐器功能，并与社区一起维护最新的固件信息。",
+    "browse": "浏览固件", "contribute": "提交固件来源", "directory": "固件目录", "directoryText": "链接原始来源，明确作者信息，以证据支持兼容性声明。",
+    "project": "项目", "publisher": "发布者", "version": "版本", "beta": "测试版", "unknown": "硬件兼容性未知", "verified": "查看兼容性证据", "source": "发布者网站", "package": "固件包", "repo": "代码仓库", "evidence": "验证记录",
+    "shrub": "适用于 M-VAVE FM-1 的波表合成器，配有浏览器编辑器。",
+    "notice": "收录不代表兼容性认证。固件包能够解析或哈希值匹配，并不能证明它适用于您的硬件。固件包由发布者托管，本项目不托管固件二进制文件。",
+    "flasherTitle": "在这里发现固件，了解 FM-1 Flasher。", "flasherText": "Awesome FM-1 整理固件来源。相关项目 FM-1 Flasher 是一款实验性 Android 应用，用于浏览固件并通过 USB MIDI 安装固件。Awesome FM-1 附加来源仍在规划中，应用尚未实现多来源支持。被本目录收录不代表该固件已在应用中提供或与之兼容。",
+    "flasherLink": "FM-1 Flasher 网站", "flasherRepo": "应用源代码",
+    "joinTitle": "发现了新的固件项目？", "joinText": "欢迎提交包含固件包（pkg）链接或代码仓库链接的拉取请求（PR）。您无需是项目作者，也无需在硬件上刷写固件即可参与。",
+    "steps": ["Fork 本仓库并创建分支。", "添加 submissions/project-name.md，填写项目名称、简介、作者、公开的 HTTPS 固件包或仓库链接、已知版本，以及兼容性证据；未知时填写“unknown”。", "为单个项目提交 PR。维护者会核查原始来源，并协助补全目录条目后再发布。"],
+    "rules": "注明作者，尊重分发权利，明确测试版状态，并以事实描述项目。请勿上传固件二进制文件，也欢迎提交完整的目录条目。", "guidelines": "阅读贡献指南",
+    "catalogTitle": "统一目录，原始下载来源。", "catalogText": "请在支持本目录格式的客户端中使用合并后的 JSON 地址。单个发布者目录是另一种选择，同时订阅两者会产生重复条目。兼容性未知时，客户端必须阻止刷写。", "catalogLink": "打开 catalog.json", "schema": "目录结构定义", "skip": "跳转到正文", "footer": "由社区维护的 M-VAVE FM-1 元数据。固件和图片归各自作者所有。"
+  }
+}
