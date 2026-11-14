@@ -1,0 +1,28 @@
+{
+  "sources": [
+    {
+      "id": "firmwarehub",
+      "name": "The Firmware Hub",
+      "catalogUrl": "https://thefirmwarehub.com/catalog.json",
+      "baseUrl": "https://thefirmwarehub.com/",
+      "enabledByDefault": true,
+      "minRefreshHours": 24,
+      "downloadPolicy": "publisher-github-release-or-pinned-stock",
+      "catalogHosts": ["thefirmwarehub.com"],
+      "packageHosts": ["api.github.com", "github.com", "raw.githubusercontent.com", "release-assets.githubusercontent.com", "objects.githubusercontent.com"],
+      "artworkHosts": ["thefirmwarehub.com"]
+    },
+    {
+      "id": "awesome-fm1",
+      "name": "awesome-fm1",
+      "catalogUrl": "https://raw.githubusercontent.com/ekim-pl/awesome-fm1/main/catalog.json",
+      "baseUrl": "https://raw.githubusercontent.com/ekim-pl/awesome-fm1/main/",
+      "enabledByDefault": false,
+      "minRefreshHours": 24,
+      "downloadPolicy": "publisher-direct-or-github-release",
+      "catalogHosts": ["raw.githubusercontent.com"],
+      "packageHosts": ["shrub.audio", "api.github.com", "github.com", "raw.githubusercontent.com", "release-assets.githubusercontent.com", "objects.githubusercontent.com"],
+      "artworkHosts": []
+    }
+  ]
+}

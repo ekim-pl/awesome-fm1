@@ -1,0 +1,25 @@
+{
+  "updated": "2026-11-14T20:05:43Z",
+  "firmwares": [
+    {
+      "id": "shrub",
+      "name": "SHRUB",
+      "author": "Xfer Inc.",
+      "kind": "synth",
+      "what": "A wavetable synthesizer for the M-VAVE FM-1, with a browser editor.",
+      "version": "1.01",
+      "site": "https://shrub.audio/",
+      "editor": "https://shrub.audio/editor/",
+      "install": "https://shrub.audio/editor/install",
+      "repo": null,
+      "tag": null,
+      "asset": null,
+      "pkg": "https://shrub.audio/editor/firmware/SHRUB.fwsc",
+      "product": "FM-1_901",
+      "size": 615868,
+      "sha256": "73b4a369e73a66e45c3c14468f336f0c20f801c0da8dea52005996d7751b8537",
+      "chip": "unknown",
+      "beta": true
+    }
+  ]
+}

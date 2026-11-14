@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "awesome-fm1 catalog profile compatible with Firmware Hub field names",
+  "description": "Structure validation only. Runtime clients must enforce download origin, identity, compatibility and integrity policies separately.",
+  "type": "object",
+  "required": ["updated", "firmwares"],
+  "properties": {
+    "updated": {"type": "string", "minLength": 1, "maxLength": 128},
+    "firmwares": {
+      "type": "array",
+      "maxItems": 5000,
+      "items": {"$ref": "#/$defs/firmware"}
+    },
+    "stock": {"type": ["object", "null"]}
+  },
+  "additionalProperties": true,
+  "$defs": {
+    "firmware": {
+      "type": "object",
+      "required": ["id", "name", "sha256", "product"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1, "maxLength": 256},
+        "name": {"type": "string", "minLength": 1, "maxLength": 32768},
+        "author": {"type": "string", "maxLength": 32768},
+        "what": {"type": "string", "maxLength": 32768},
+        "version": {"type": "string", "maxLength": 32768},
+        "repo": {"type": ["string", "null"], "pattern": "^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$"},
+        "tag": {"type": ["string", "null"]},
+        "asset": {"type": ["string", "null"], "pattern": "^[0-9]+(?: .+)?$"},
+        "pkg": {"type": ["string", "null"]},
+        "site": {"type": ["string", "null"]},
+        "card": {"type": ["string", "null"]},
+        "published": {"type": ["string", "null"]},
+        "date": {"type": ["string", "null"]},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "product": {"type": "string", "pattern": "^FM-1_[0-9]{1,16}$"},
+        "chip": {"type": "string"},
+        "size": {"type": "integer", "minimum": 960, "maximum": 4194304},
+        "beta": {"type": "boolean"},
+        "kind": {
+          "oneOf": [
+            {"type": "string"},
+            {"type": "array", "items": {"type": "string"}}
+          ]
+        }
+      },
+      "additionalProperties": true
+    }
+  }
+}
