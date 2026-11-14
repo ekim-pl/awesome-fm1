@@ -14,7 +14,7 @@ This repository stores metadata, not firmware binaries. Packages remain hosted b
 
 The GitHub Pages website is available in [English](https://ekim-pl.github.io/awesome-fm1/en/), [Polish](https://ekim-pl.github.io/awesome-fm1/pl/) and [Simplified Chinese](https://ekim-pl.github.io/awesome-fm1/zh-CN/).
 
-Build locally with `python3 scripts/build_site.py`; output goes to `_site/`. Translations are in [website/locales.json](website/locales.json), with shared styling in [website/style.css](website/style.css). Firmware cards are generated from `catalog.json`; publisher text remains unchanged unless a translation is provided. The [Pages workflow](.github/workflows/pages.yml) checks PR builds and deploys pushes to `main`. GitHub Pages must use **GitHub Actions** as its source.
+Build locally with `python3 scripts/build_site.py`; output goes to `_site/`. Translations are in [website/locales.json](website/locales.json), with shared styling in [website/style.css](website/style.css). The website introduces the project and contribution guidelines without listing individual firmware projects; `catalog.json` remains available as a separate endpoint. The [Pages workflow](.github/workflows/pages.yml) checks PR builds and deploys pushes to `main`. GitHub Pages must use **GitHub Actions** as its source.
 
 ## Firmware directory
 
