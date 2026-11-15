@@ -8,7 +8,7 @@
 
 A community-maintained directory of firmware for the **M-VAVE FM-1**. Discover projects, find their original publishers, and help keep firmware sources accurate and accessible.
 
-A companion project to [FM-1 Flasher](https://github.com/ekim-pl/android-fm1-flasher), the experimental Android firmware browser and USB MIDI flasher. The app supports built-in and custom firmware catalogs; the `third-party` feed can be added as a custom source. Visit the [FM-1 Flasher website](https://ekim-pl.github.io/android-fm1-flasher/) for app documentation.
+A companion project to [FM-1 Flasher](https://github.com/ekim-pl/android-fm1-flasher), the experimental Android firmware browser and USB MIDI flasher. The app supports built-in and custom firmware catalogs. Visit the [FM-1 Flasher website](https://ekim-pl.github.io/android-fm1-flasher/) for app documentation.
 
 Awesome FM-1 brings together publisher download links, project repositories, release information, and documented compatibility evidence in a consistent catalog. We welcome contributions from firmware authors, musicians, developers, and anyone who discovers a useful FM-1 project.
 
@@ -37,9 +37,9 @@ Choose the combined catalog for a single endpoint, or subscribe to individual pu
 
 Use the combined catalog **or** selected individual catalogs. Subscribing to both creates overlapping offers; clients must not merge projects by name or device identity.
 
-FM-1 Flasher includes The Firmware Hub and Awesome FM-1 as built-in sources (Hub enabled and Awesome FM-1 disabled by default), and supports custom JSON catalog subscriptions. The `third-party` feed is not built in; add it manually as described below.
+FM-1 Flasher includes The Firmware Hub and Awesome FM-1 as built-in sources (Hub enabled and Awesome FM-1 disabled by default), and supports custom JSON catalog subscriptions. The `third-party` discovery feed is separate and is not compatible with the app’s catalog importer.
 
-SHRUB is currently listed with `chip: "unknown"`. Its package passed the Android app's structural parser, but installation, subsequent updates, and old/new flash compatibility have not been tested. Clients must block flashing when compatibility is unknown.
+SHRUB is currently listed with `chip: "unknown"`. Its package passed the Android app's structural parser, but installation, subsequent updates, and old/new flash compatibility have not been tested. FM-1 Flasher normally blocks installation when compatibility is unknown; its separate force option requires explicit confirmation.
 
 ## Third-party discovery catalog
 
@@ -49,17 +49,9 @@ The main [catalog.json](catalog.json) is generated only from `catalogs/*.json`. 
 
 Entries are unreviewed and may describe other devices, tools, unavailable projects or works in progress. Missing metadata remains null. It does **not** satisfy the installation catalog schema; do not use it by itself to authorize downloads or flashing.
 
-### Add the third-party feed to FM-1 Flasher
+### Access the third-party feed
 
-In an app build that supports custom firmware sources, open **Settings → Firmware sources** and add a source with the `catalog-json` provider. Give it a name such as `FM-1 third-party`, then use this catalog URL:
-
-```text
-https://raw.githubusercontent.com/ekim-pl/awesome-fm1/main/third-party/catalog.json
-```
-
-Set the refresh interval to 24–168 hours. In the URL scopes, allow `raw.githubusercontent.com` for this catalog URL, then approve only the package and artwork hosts you intend to use. GitHub-hosted release packages commonly need `github.com` and `release-assets.githubusercontent.com` or `objects.githubusercontent.com`; artwork may need no extra host. Save the source, select **Check now**, then enable it to show its entries in the Library. The app's custom source setup is documented in [FM-1 Flasher](https://github.com/ekim-pl/android-fm1-flasher#library-and-sources).
-
-This adds the discovery feed, not ready-to-flash firmware: many entries have no package URL or verified compatibility data. Checking the catalog does not download or install packages. Review each project's publisher and package before downloading; the app validates package data when you download it.
+The raw discovery list is available at <https://raw.githubusercontent.com/ekim-pl/awesome-fm1/main/third-party/catalog.json>. FM-1 Flasher cannot import it as a custom JSON catalog: its parser requires a valid `sha256` and `product` for every entry, and the discovery list includes entries without them. To explore a project in the app, add its GitHub repository or a direct package URL as a separate source when supported; see the [FM-1 Flasher source documentation](https://github.com/ekim-pl/android-fm1-flasher#catalog-providers-and-authentication).
 
 The [daily workflow](.github/workflows/third-party.yml) updates the file and commits changes to `main`; it can also be started manually. Locally, run:
 

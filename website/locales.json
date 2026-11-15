@@ -7,11 +7,11 @@
     "contribute": "Add a firmware source",
     "directory": "Firmware directory",
     "flasherTitle": "Discover here. Explore FM-1 Flasher.",
-    "flasherText": "Awesome FM-1 curates firmware sources. FM-1 Flasher is the related experimental Android application for browsing firmware and installing it over USB MIDI. The additional Awesome FM-1 source is planned; multi-source support is not yet implemented. Listing a project here does not make it available or compatible in the app.",
+    "flasherText": "FM-1 Flasher is an experimental Android app for browsing and installing firmware over USB MIDI. It supports built-in and custom sources; Awesome FM-1 is disabled by default. A listing does not establish compatibility.",
     "flasherLink": "FM-1 Flasher website",
     "flasherRepo": "App source code",
     "joinTitle": "Found a firmware project?",
-    "joinText": "Send a pull request with a package (pkg) URL or repository URL. You do not need to be the author or perform a hardware flash to contribute.",
+    "joinText": "Send a pull request with a package URL or repository URL. You do not need to be the author or perform a hardware flash to contribute.",
     "steps": [
       "Fork the repository and create a branch.",
       "Add submissions/project-name.md with the name, description, author, public HTTPS package or repository URL, version if known, and compatibility evidence or “unknown”.",
@@ -20,7 +20,7 @@
     "rules": "Credit the author, respect distribution rights, disclose beta status, and keep claims factual. Do not upload firmware binaries. Full catalog contributions are also welcome.",
     "guidelines": "Read contribution guidelines",
     "catalogTitle": "One catalog. Original downloads.",
-    "catalogText": "Use the combined JSON endpoint in a client that supports this catalog profile. Individual publisher catalogs are alternatives; subscribing to both creates duplicate offers. Clients must block flashing when compatibility is unknown.",
+    "catalogText": "Use the combined JSON endpoint in a compatible client. Individual publisher catalogs are alternatives; subscribing to both creates duplicate offers. FM-1 Flasher normally blocks unknown compatibility and offers a separately confirmed force option.",
     "catalogLink": "Open catalog.json",
     "schema": "Catalog schema",
     "skip": "Skip to content",
@@ -28,7 +28,10 @@
     "home": "Homepage",
     "githubProfile": "GitHub profile",
     "socialLabel": "Social links",
-    "flasherCtaText": "Explore firmware and install it over USB MIDI with the experimental Android app."
+    "flasherCtaText": "Explore firmware and install it over USB MIDI with the experimental Android app.",
+    "thirdTitle": "Third-party discovery list",
+    "thirdText": "The third-party list gathers projects from 2bbb and aroum, using The Firmware Hub to filter existing entries. It is separate from the main catalog and is not directly importable into FM-1 Flasher because entries may lack required package data.",
+    "thirdLink": "Explore third-party catalog"
   },
   "pl": {
     "label": "Polski",
@@ -38,11 +41,11 @@
     "contribute": "Zgłoś źródło firmware",
     "directory": "Katalog firmware",
     "flasherTitle": "Odkrywaj tutaj. Poznaj FM-1 Flasher.",
-    "flasherText": "Awesome FM-1 gromadzi źródła firmware. Powiązany FM-1 Flasher to eksperymentalna aplikacja na Androida do przeglądania firmware i instalowania go przez USB MIDI. Dodatkowe źródło Awesome FM-1 jest planowane; obsługa wielu źródeł nie została jeszcze wdrożona. Wpis w katalogu nie oznacza dostępności ani zgodności w aplikacji.",
+    "flasherText": "FM-1 Flasher to eksperymentalna aplikacja na Androida do przeglądania i instalowania firmware przez USB MIDI. Obsługuje źródła wbudowane i własne; Awesome FM-1 jest domyślnie wyłączone. Wpis nie potwierdza zgodności.",
     "flasherLink": "Strona FM-1 Flasher",
     "flasherRepo": "Kod źródłowy aplikacji",
     "joinTitle": "Znasz projekt firmware?",
-    "joinText": "Wyślij pull request z adresem pakietu (pkg) lub repozytorium. Nie musisz być autorem ani instalować firmware na sprzęcie, aby pomóc.",
+    "joinText": "Wyślij pull request z adresem pakietu lub repozytorium. Nie musisz być autorem ani instalować firmware na sprzęcie, aby pomóc.",
     "steps": [
       "Utwórz fork repozytorium i nową gałąź.",
       "Dodaj submissions/nazwa-projektu.md z nazwą, opisem, autorem, publicznym adresem HTTPS pakietu lub repozytorium, znaną wersją oraz dowodami zgodności albo oznaczeniem „unknown”.",
@@ -51,7 +54,7 @@
     "rules": "Podaj autora, szanuj prawa do dystrybucji, ujawnij status beta i opisuj fakty. Nie przesyłaj plików firmware. Możesz też przygotować kompletny wpis katalogu.",
     "guidelines": "Zasady współpracy",
     "catalogTitle": "Jeden katalog. Oryginalne pliki.",
-    "catalogText": "Używaj zbiorczego adresu JSON w kliencie obsługującym ten profil katalogu. Katalogi poszczególnych wydawców są alternatywą; subskrybowanie obu wariantów powiela oferty. Klient musi blokować instalację przy nieznanej zgodności.",
+    "catalogText": "Używaj zbiorczego adresu JSON w zgodnym kliencie. Katalogi poszczególnych wydawców są alternatywą; subskrybowanie obu wariantów powiela oferty. FM-1 Flasher zwykle blokuje instalację przy nieznanej zgodności i oferuje osobno potwierdzaną opcję wymuszenia.",
     "catalogLink": "Otwórz catalog.json",
     "schema": "Schemat katalogu",
     "skip": "Przejdź do treści",
@@ -59,7 +62,10 @@
     "home": "Strona domowa",
     "githubProfile": "Profil GitHub",
     "socialLabel": "Media społecznościowe",
-    "flasherCtaText": "Przeglądaj firmware i instaluj je przez USB MIDI z eksperymentalną aplikacją na Androida."
+    "flasherCtaText": "Przeglądaj firmware i instaluj je przez USB MIDI z eksperymentalną aplikacją na Androida.",
+    "thirdTitle": "Lista projektów third-party",
+    "thirdText": "Lista third-party zbiera projekty z 2bbb i aroum, korzystając z The Firmware Hub do odfiltrowania istniejących wpisów. Jest oddzielona od głównego katalogu i nie można jej bezpośrednio zaimportować do FM-1 Flasher, ponieważ wpisy mogą nie zawierać wymaganych danych pakietu.",
+    "thirdLink": "Otwórz katalog third-party"
   },
   "zh-CN": {
     "label": "简体中文",
@@ -69,11 +75,11 @@
     "contribute": "提交固件来源",
     "directory": "固件目录",
     "flasherTitle": "在这里发现固件，了解 FM-1 Flasher。",
-    "flasherText": "Awesome FM-1 整理固件来源。相关项目 FM-1 Flasher 是一款实验性 Android 应用，用于浏览固件并通过 USB MIDI 安装固件。Awesome FM-1 附加来源仍在规划中，应用尚未实现多来源支持。被本目录收录不代表该固件已在应用中提供或与之兼容。",
+    "flasherText": "FM-1 Flasher 是一款实验性 Android 应用，可浏览固件并通过 USB MIDI 安装。它支持内置和自定义来源；Awesome FM-1 默认关闭。收录项目并不代表兼容。",
     "flasherLink": "FM-1 Flasher 网站",
     "flasherRepo": "应用源代码",
     "joinTitle": "发现了新的固件项目？",
-    "joinText": "欢迎提交包含固件包（pkg）链接或代码仓库链接的拉取请求（PR）。您无需是项目作者，也无需在硬件上刷写固件即可参与。",
+    "joinText": "欢迎提交包含固件包链接或代码仓库链接的拉取请求（PR）。您无需是项目作者，也无需在硬件上刷写固件即可参与。",
     "steps": [
       "Fork 本仓库并创建分支。",
       "添加 submissions/project-name.md，填写项目名称、简介、作者、公开的 HTTPS 固件包或仓库链接、已知版本，以及兼容性证据；未知时填写“unknown”。",
@@ -82,7 +88,7 @@
     "rules": "注明作者，尊重分发权利，明确测试版状态，并以事实描述项目。请勿上传固件二进制文件，也欢迎提交完整的目录条目。",
     "guidelines": "阅读贡献指南",
     "catalogTitle": "统一目录，原始下载来源。",
-    "catalogText": "请在支持本目录格式的客户端中使用合并后的 JSON 地址。单个发布者目录是另一种选择，同时订阅两者会产生重复条目。兼容性未知时，客户端必须阻止刷写。",
+    "catalogText": "请在兼容的客户端中使用合并后的 JSON 地址。单个发布者目录是另一种选择，同时订阅两者会产生重复条目。FM-1 Flasher 通常阻止安装兼容性未知的固件，并提供需要单独确认的强制安装选项。",
     "catalogLink": "打开 catalog.json",
     "schema": "目录结构定义",
     "skip": "跳转到正文",
@@ -90,6 +96,9 @@
     "home": "个人主页",
     "githubProfile": "GitHub 个人资料",
     "socialLabel": "社交媒体链接",
-    "flasherCtaText": "使用实验性 Android 应用浏览固件并通过 USB MIDI 安装。"
+    "flasherCtaText": "使用实验性 Android 应用浏览固件并通过 USB MIDI 安装。",
+    "thirdTitle": "第三方项目发现列表",
+    "thirdText": "第三方列表汇集 2bbb 和 aroum 的项目，并使用 The Firmware Hub 过滤已有项目。它独立于主目录；由于条目可能缺少必需的软件包数据，不能直接导入 FM-1 Flasher。",
+    "thirdLink": "查看第三方目录"
   }
 }
