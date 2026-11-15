@@ -1,6 +1,6 @@
 # Awesome FM-1
 
-![Awesome FM-1 logo and icon](assets/branding/plansza.png)
+![Awesome FM-1 logo and icon](assets/branding/branding-board.png)
 
 [![Catalog CI](https://github.com/ekim-pl/awesome-fm1/actions/workflows/catalog-ci.yml/badge.svg)](https://github.com/ekim-pl/awesome-fm1/actions/workflows/catalog-ci.yml)
 [![Website build](https://github.com/ekim-pl/awesome-fm1/actions/workflows/pages.yml/badge.svg)](https://github.com/ekim-pl/awesome-fm1/actions/workflows/pages.yml)
