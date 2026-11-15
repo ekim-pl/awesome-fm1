@@ -5,7 +5,7 @@
     "attribution": "Firmware list: The Firmware Hub – https://thefirmwarehub.com",
     "terms": "Name The Firmware Hub with its address: a working link to https://thefirmwarehub.com where links work; on a device without a browser the address written out where people see it (the list's title or info screen, About). Card texts and pictures belong to their makers (their fmhub.json and repositories), not under this licence: name each maker and link its repository. Read this file at most once a day; rules: https://thefirmwarehub.com/kb/#catalog"
   },
-  "updated": "2026-11-15 20:15 UTC",
+  "updated": "2026-11-15 20:24 UTC",
   "firmwares": [
     {
       "id": "github-1andesc__fm1-firmware-downloader",
