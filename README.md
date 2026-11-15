@@ -8,7 +8,7 @@
 
 A community-maintained directory of firmware for the **M-VAVE FM-1**. Discover projects, find their original publishers, and help keep firmware sources accurate and accessible.
 
-A companion project to [FM-1 Flasher](https://github.com/ekim-pl/android-fm1-flasher), the experimental Android firmware browser and USB MIDI flasher. Awesome FM-1 maintains additional firmware sources; multi-source integration in the app is planned, not yet implemented. Visit the [FM-1 Flasher website](https://ekim-pl.github.io/android-fm1-flasher/) for app documentation.
+A companion project to [FM-1 Flasher](https://github.com/ekim-pl/android-fm1-flasher), the experimental Android firmware browser and USB MIDI flasher. The app supports built-in and custom firmware catalogs; the `third-party` feed can be added as a custom source. Visit the [FM-1 Flasher website](https://ekim-pl.github.io/android-fm1-flasher/) for app documentation.
 
 Awesome FM-1 brings together publisher download links, project repositories, release information, and documented compatibility evidence in a consistent catalog. We welcome contributions from firmware authors, musicians, developers, and anyone who discovers a useful FM-1 project.
 
@@ -37,17 +37,29 @@ Choose the combined catalog for a single endpoint, or subscribe to individual pu
 
 Use the combined catalog **or** selected individual catalogs. Subscribing to both creates overlapping offers; clients must not merge projects by name or device identity.
 
-The planned Android integration keeps **The Firmware Hub enabled by default** and **Awesome FM-1 disabled by default**. Multiple sources and SQLite are not yet implemented in the Android app. This repository provides the catalog foundation.
+FM-1 Flasher includes The Firmware Hub and Awesome FM-1 as built-in sources (Hub enabled and Awesome FM-1 disabled by default), and supports custom JSON catalog subscriptions. The `third-party` feed is not built in; add it manually as described below.
 
 SHRUB is currently listed with `chip: "unknown"`. Its package passed the Android app's structural parser, but installation, subsequent updates, and old/new flash compatibility have not been tested. Clients must block flashing when compatibility is unknown.
 
 ## Third-party discovery catalog
 
-[third-party/catalog.json](third-party/catalog.json) is an automatically assembled discovery list, separate from the reviewed installation catalog. It combines [2bbb's collection](https://github.com/2bbb/fm1-firmware-collection), the firmware section of [aroum's directory](https://github.com/aroum/fm1-custom-fw), and metadata from [The Firmware Hub](https://thefirmwarehub.com/). The Hub's attribution and license are included in the file. The workflow excludes Hub projects and deduplicates repository, default-branch commit and name; GRUS and JAZZY without Git are retained as separate projects by request. See `aggregation.cleanup` for removals and `aggregation.added_without_git` for entries without a Git link.
+[third-party/catalog.json](third-party/catalog.json) is an automatically refreshed discovery list, separate from the reviewed firmware directory above. Candidate projects come from [2bbb's firmware collection](https://github.com/2bbb/fm1-firmware-collection) and the firmware section of [aroum's directory](https://github.com/aroum/fm1-custom-fw). The generator also reads [The Firmware Hub's catalog](https://thefirmwarehub.com/) to exclude projects already listed there and to enrich entries with upstream metadata when available; Hub projects are therefore not duplicated in this list. A few aroum entries without a Git repository, including GRUS and JAZZY, are retained separately. The file records its sources and cleanup decisions under `aggregation`, and carries the Hub's required attribution and catalog license.
 
-The main `catalog.json` builder reads only `catalogs/*.json`; it never reads `third-party/`. This is checked by the catalog tests.
+The main [catalog.json](catalog.json) is generated only from `catalogs/*.json`. Its builder never reads `third-party/`, so this discovery list cannot add entries to or change the main catalog. The SHRUB entry above is a separately reviewed entry in the main catalog. This separation is checked by the catalog tests.
 
-Entries are unreviewed and may describe other devices, tools, unavailable projects or works in progress. Missing metadata remains null. It does **not** satisfy the installation catalog schema; do not use it to authorize downloads or flashing. SHRUB also has a separate reviewed entry in `catalog.json`.
+Entries are unreviewed and may describe other devices, tools, unavailable projects or works in progress. Missing metadata remains null. It does **not** satisfy the installation catalog schema; do not use it by itself to authorize downloads or flashing.
+
+### Add the third-party feed to FM-1 Flasher
+
+In an app build that supports custom firmware sources, open **Settings → Firmware sources** and add a source with the `catalog-json` provider. Give it a name such as `FM-1 third-party`, then use this catalog URL:
+
+```text
+https://raw.githubusercontent.com/ekim-pl/awesome-fm1/main/third-party/catalog.json
+```
+
+Set the refresh interval to 24–168 hours. In the URL scopes, allow `raw.githubusercontent.com` for this catalog URL, then approve only the package and artwork hosts you intend to use. GitHub-hosted release packages commonly need `github.com` and `release-assets.githubusercontent.com` or `objects.githubusercontent.com`; artwork may need no extra host. Save the source, select **Check now**, then enable it to show its entries in the Library. The app's custom source setup is documented in [FM-1 Flasher](https://github.com/ekim-pl/android-fm1-flasher#library-and-sources).
+
+This adds the discovery feed, not ready-to-flash firmware: many entries have no package URL or verified compatibility data. Checking the catalog does not download or install packages. Review each project's publisher and package before downloading; the app validates package data when you download it.
 
 The [daily workflow](.github/workflows/third-party.yml) updates the file and commits changes to `main`; it can also be started manually. Locally, run:
 
