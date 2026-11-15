@@ -2,7 +2,9 @@ import copy
 import importlib.util
 import json
 from pathlib import Path
+import tempfile
 import unittest
+from unittest.mock import patch
 
 from jsonschema import ValidationError
 
@@ -48,7 +50,22 @@ class CatalogTests(unittest.TestCase):
         self.sample["firmwares"] = []
         self.assertEqual([], catalog.combine([self.sample])["firmwares"])
 
+    def test_main_catalog_ignores_third_party_directory(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "catalogs").mkdir()
+            (root / "third-party").mkdir()
+            (root / "catalogs" / "shrub.json").write_text(json.dumps(self.sample))
+            (root / "third-party" / "catalog.json").write_text("not a valid catalog")
+            with patch.object(catalog, "ROOT", root), patch("sys.argv", ["catalog.py"]):
+                catalog.main()
+            self.assertEqual(json.loads((root / "catalog.json").read_text()),
+                             catalog.combine([self.sample]))
+            with patch.object(catalog, "ROOT", root), patch("sys.argv", ["catalog.py", "--check"]):
+                catalog.main()
+
     def test_newest_component_time_is_used_without_fabricating_freshness(self):
+        self.sample["updated"] = "2026-11-14T00:00:00Z"
         other = {"updated": "2026-11-15T00:00:00Z", "firmwares": []}
         self.assertEqual(other["updated"], catalog.combine([self.sample, other])["updated"])
 

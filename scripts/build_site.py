@@ -41,6 +41,8 @@ def build():
     OUT.mkdir(exist_ok=True)
     shutil.copyfile(ROOT / 'website/style.css', OUT / 'style.css')
     shutil.copyfile(ROOT / 'catalog.json', OUT / 'catalog.json')
+    (OUT / 'third-party').mkdir(exist_ok=True)
+    shutil.copyfile(ROOT / 'third-party/catalog.json', OUT / 'third-party/catalog.json')
     for asset in ('logo.svg', 'favicon.ico', 'ekim-logo.webp'):
         shutil.copyfile(ROOT / 'assets/branding' / asset, OUT / asset)
     style_version = hashlib.sha256((OUT / 'style.css').read_bytes()).hexdigest()[:12]

@@ -1,0 +1,45 @@
+name: Refresh third-party catalog
+
+on:
+  schedule:
+    - cron: '17 3 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: third-party-catalog
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: '3.12'
+      - uses: actions/cache/restore@v4
+        with:
+          path: .cache/fm1-catalog
+          key: third-party-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: third-party-
+      - name: Generate catalog
+        run: python scripts/aggregate_third_party.py --output third-party/catalog.json --exclude-hub --unique-code --unique-names
+      - name: Preserve request cache
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: .cache/fm1-catalog
+          key: third-party-${{ github.run_id }}-${{ github.run_attempt }}
+      - name: Commit catalog changes
+        run: |
+          if git diff --quiet -- third-party/catalog.json; then exit 0; fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add third-party/catalog.json
+          git commit -m 'Refresh third-party firmware catalog'
+          git push

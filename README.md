@@ -41,6 +41,22 @@ The planned Android integration keeps **The Firmware Hub enabled by default** an
 
 SHRUB is currently listed with `chip: "unknown"`. Its package passed the Android app's structural parser, but installation, subsequent updates, and old/new flash compatibility have not been tested. Clients must block flashing when compatibility is unknown.
 
+## Third-party discovery catalog
+
+[third-party/catalog.json](third-party/catalog.json) is an automatically assembled discovery list, separate from the reviewed installation catalog. It combines [2bbb's collection](https://github.com/2bbb/fm1-firmware-collection), the firmware section of [aroum's directory](https://github.com/aroum/fm1-custom-fw), and metadata from [The Firmware Hub](https://thefirmwarehub.com/). The Hub's attribution and license are included in the file. The workflow excludes Hub projects and deduplicates repository, default-branch commit and name; GRUS and JAZZY without Git are retained as separate projects by request. See `aggregation.cleanup` for removals and `aggregation.added_without_git` for entries without a Git link.
+
+The main `catalog.json` builder reads only `catalogs/*.json`; it never reads `third-party/`. This is checked by the catalog tests.
+
+Entries are unreviewed and may describe other devices, tools, unavailable projects or works in progress. Missing metadata remains null. It does **not** satisfy the installation catalog schema; do not use it to authorize downloads or flashing. SHRUB also has a separate reviewed entry in `catalog.json`.
+
+The [daily workflow](.github/workflows/third-party.yml) updates the file and commits changes to `main`; it can also be started manually. Locally, run:
+
+```sh
+python3 scripts/aggregate_third_party.py --output third-party/catalog.json --exclude-hub --unique-code --unique-names
+```
+
+The cache under `.cache/fm1-catalog` limits repeated Hub catalog requests to once per 24 hours; retain it across runs as required by the Hub's terms. `--offline` uses cached inputs. The workflow preserves the cache between runs. The file is also published at `https://ekim-pl.github.io/awesome-fm1/third-party/catalog.json` with Pages.
+
 ## Project website
 
 The GitHub Pages website is available in [English](https://ekim-pl.github.io/awesome-fm1/en/), [Polish](https://ekim-pl.github.io/awesome-fm1/pl/) and [Simplified Chinese](https://ekim-pl.github.io/awesome-fm1/zh-CN/).
@@ -124,8 +140,8 @@ python3 -m venv .venv
 
 Edit the individual catalog first, including its actual UTC update time. The builder produces the aggregate deterministically and takes its timestamp from the newest component. CI validates structure, duplicate IDs and aggregate consistency without contacting publishers. It does not verify downloaded firmware or prove hardware compatibility.
 
-New providers, hosts, hashes and compatibility claims require review. Never change an expected hash merely to make a failed download pass. Scheduled upstream discovery, package validation and catalog signing are planned; they are **not implemented** in this initial project. Published catalogs are currently served over HTTPS without a detached signature.
+New providers, hosts, hashes and compatibility claims require review. Never change an expected hash merely to make a failed download pass. The separate third-party workflow performs scheduled discovery; package validation and catalog signing are not implemented. Published catalogs are currently served over HTTPS without a detached signature.
 
 ## Attribution
 
-Catalog format reference: [The Firmware Hub](https://thefirmwarehub.com/). This repository does not copy the Hub's catalog. Firmware, artwork and publisher descriptions remain their authors' work. Listing a download URL does not grant permission to redistribute its binary. No license is asserted here for third-party firmware.
+Catalog format reference: [The Firmware Hub](https://thefirmwarehub.com/). The reviewed installation catalog does not copy the Hub catalog; the separate discovery catalog includes attribution and upstream-derived metadata. Firmware, artwork and publisher descriptions remain their authors' work. Listing a download URL does not grant permission to redistribute its binary. No license is asserted here for third-party firmware.
