@@ -49,6 +49,7 @@ class CatalogTests(unittest.TestCase):
         self.assertEqual([], catalog.combine([self.sample])["firmwares"])
 
     def test_newest_component_time_is_used_without_fabricating_freshness(self):
+        self.sample["updated"] = "2026-11-14T00:00:00Z"
         other = {"updated": "2026-11-15T00:00:00Z", "firmwares": []}
         self.assertEqual(other["updated"], catalog.combine([self.sample, other])["updated"])
 
