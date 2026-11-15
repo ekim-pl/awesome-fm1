@@ -12,7 +12,7 @@ A companion project to [FM-1 Flasher](https://github.com/ekim-pl/android-fm1-fla
 
 Awesome FM-1 brings together publisher download links, project repositories, release information, and documented compatibility evidence in a consistent catalog. We welcome contributions from firmware authors, musicians, developers, and anyone who discovers a useful FM-1 project.
 
-**Know a firmware project we should include? Open a pull request with its package (`pkg`) URL or project repository URL.** A link and a short description are enough to start a review; a complete catalog entry is welcome too.
+**Know a firmware project we should include? Open a pull request with its package URL or project repository URL.** A link and a short description are enough to start a review; a complete catalog entry is welcome too.
 
 This repository stores metadata, not firmware binaries. Packages remain hosted by their publishers. Inclusion identifies a source; it does not certify a firmware package or establish hardware compatibility.
 
