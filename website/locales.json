@@ -30,7 +30,7 @@
     "socialLabel": "Social links",
     "flasherCtaText": "Explore firmware and install it over USB MIDI with the experimental Android app.",
     "thirdTitle": "Third-party discovery list",
-    "thirdText": "The third-party list gathers projects from 2bbb and aroum, using The Firmware Hub to filter existing entries. It is separate from the main catalog and is not directly importable into FM-1 Flasher because entries may lack required package data.",
+    "thirdText": "Sources: 2bbb and aroum. Experimental support.",
     "thirdLink": "Explore third-party catalog"
   },
   "pl": {
@@ -64,7 +64,7 @@
     "socialLabel": "Media społecznościowe",
     "flasherCtaText": "Przeglądaj firmware i instaluj je przez USB MIDI z eksperymentalną aplikacją na Androida.",
     "thirdTitle": "Lista projektów third-party",
-    "thirdText": "Lista third-party zbiera projekty z 2bbb i aroum, korzystając z The Firmware Hub do odfiltrowania istniejących wpisów. Jest oddzielona od głównego katalogu i nie można jej bezpośrednio zaimportować do FM-1 Flasher, ponieważ wpisy mogą nie zawierać wymaganych danych pakietu.",
+    "thirdText": "Źródła: 2bbb i aroum. Wsparcie eksperymentalne.",
     "thirdLink": "Otwórz katalog third-party"
   },
   "zh-CN": {
@@ -98,7 +98,7 @@
     "socialLabel": "社交媒体链接",
     "flasherCtaText": "使用实验性 Android 应用浏览固件并通过 USB MIDI 安装。",
     "thirdTitle": "第三方项目发现列表",
-    "thirdText": "第三方列表汇集 2bbb 和 aroum 的项目，并使用 The Firmware Hub 过滤已有项目。它独立于主目录；由于条目可能缺少必需的软件包数据，不能直接导入 FM-1 Flasher。",
+    "thirdText": "来源：2bbb 和 aroum。实验性支持。",
     "thirdLink": "查看第三方目录"
   }
 }
