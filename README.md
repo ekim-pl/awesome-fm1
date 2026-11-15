@@ -45,6 +45,8 @@ SHRUB is currently listed with `chip: "unknown"`. Its package passed the Android
 
 [third-party/catalog.json](third-party/catalog.json) is an automatically assembled discovery list, separate from the reviewed installation catalog. It combines [2bbb's collection](https://github.com/2bbb/fm1-firmware-collection), the firmware section of [aroum's directory](https://github.com/aroum/fm1-custom-fw), and metadata from [The Firmware Hub](https://thefirmwarehub.com/). The Hub's attribution and license are included in the file. The workflow excludes Hub projects and deduplicates repository, default-branch commit and name; GRUS and JAZZY without Git are retained as separate projects by request. See `aggregation.cleanup` for removals and `aggregation.added_without_git` for entries without a Git link.
 
+The main `catalog.json` builder reads only `catalogs/*.json`; it never reads `third-party/`. This is checked by the catalog tests.
+
 Entries are unreviewed and may describe other devices, tools, unavailable projects or works in progress. Missing metadata remains null. It does **not** satisfy the installation catalog schema; do not use it to authorize downloads or flashing. SHRUB also has a separate reviewed entry in `catalog.json`.
 
 The [daily workflow](.github/workflows/third-party.yml) updates the file and commits changes to `main`; it can also be started manually. Locally, run:
