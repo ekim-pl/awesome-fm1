@@ -34,14 +34,16 @@ def build():
     OUT.mkdir(exist_ok=True)
     shutil.copyfile(ROOT / 'website/style.css', OUT / 'style.css')
     shutil.copyfile(ROOT / 'catalog.json', OUT / 'catalog.json')
+    for asset in ('logo.svg', 'favicon.ico'):
+        shutil.copyfile(ROOT / 'assets/branding' / asset, OUT / asset)
     (OUT / '.nojekyll').touch()
     for lang, t in locales.items():
         flags = {'en': '🇬🇧', 'pl': '🇵🇱', 'zh-CN': '🇨🇳'}
         nav = ''.join(f'<a lang="{code}" hreflang="{code}" href="../{code}/"' + (' aria-current="page"' if code == lang else '') + f' aria-label="{escape(data["label"], quote=True)}" title="{escape(data["label"], quote=True)}">{flags[code]}</a>' for code, data in locales.items())
         alternates = ''.join(f'<link rel="alternate" hreflang="{code}" href="{BASE}/{code}/">' for code in locales)
         html = f'''<!doctype html>
-<html lang="{lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Awesome FM-1 — {escape(t['directory'])}</title><meta name="description" content="{escape(t['intro'], quote=True)}"><link rel="canonical" href="{BASE}/{lang}/">{alternates}<link rel="stylesheet" href="../style.css"><meta name="theme-color" content="#121817"></head>
-<body><a class="skip" href="#main">{t['skip']}</a><header><a class="brand" href="./">AWESOME <span>FM-1</span></a><nav aria-label="Language">{nav}</nav>{icon_link(REPO, 'GitHub', ICONS['GitHub'], 'github')}</header>
+<html lang="{lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Awesome FM-1 — {escape(t['directory'])}</title><meta name="description" content="{escape(t['intro'], quote=True)}"><link rel="canonical" href="{BASE}/{lang}/">{alternates}<link rel="icon" href="../favicon.ico" sizes="any"><link rel="stylesheet" href="../style.css"><meta name="theme-color" content="#121817"></head>
+<body><a class="skip" href="#main">{t['skip']}</a><header><a class="brand" href="./"><img src="../logo.svg" alt="Awesome FM-1" width="225" height="64"></a><nav aria-label="Language">{nav}</nav>{icon_link(REPO, 'GitHub', ICONS['GitHub'], 'github')}</header>
 <main id="main"><section class="hero"><div><p class="kicker">{t['eyebrow']}</p><h1>{t['title']}</h1><p class="intro">{t['intro']}</p><div class="actions">{link('#contribute', t['contribute'], 'button')}</div></div><div class="synth" aria-hidden="true"><div class="synth-top">AWESOME FM-1 <span>COMMUNITY / 001</span></div><div class="display"><span>FIND YOUR NEXT SOUND</span><svg viewBox="0 0 400 120"><path d="M0 60H25L45 12 70 108 95 12 120 108 145 12 170 108 195 12 220 108 245 12 270 108 295 12 320 108 345 12 370 60H400"/></svg><b>FM—1</b></div><div class="knobs"><i></i><i></i><i></i><span>EXPLORE<br>CREATE<br>CONTRIBUTE</span></div></div></section>
 <section class="companion"><p class="kicker">01 / FM-1 FLASHER</p><h2>{t['flasherTitle']}</h2><p>{t['flasherText']}</p><div class="links">{link(FLASHER + '/' + lang + '/', t['flasherLink'])}{link('https://github.com/ekim-pl/android-fm1-flasher', t['flasherRepo'])}</div></section>
 <section id="contribute" class="contribute"><div><p class="kicker">02 / PULL REQUEST</p><h2>{t['joinTitle']}</h2><p>{t['joinText']}</p>{link(REPO + '/blob/main/README.md#contributing', t['guidelines'], 'button')}</div><div><ol>{''.join('<li>' + escape(step) + '</li>' for step in t['steps'])}</ol><p class="note">{t['rules']}</p></div></section>
@@ -49,7 +51,7 @@ def build():
         target = OUT / lang
         target.mkdir(exist_ok=True)
         (target / 'index.html').write_text(html)
-    (OUT / 'index.html').write_text('<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=en/"><title>Awesome FM-1</title></head><body><a href="en/">English</a> · <a href="pl/">Polski</a> · <a href="zh-CN/">简体中文</a></body></html>')
+    (OUT / 'index.html').write_text('<!doctype html><html lang="en"><head><meta charset="utf-8"><link rel="icon" href="favicon.ico" sizes="any"><meta http-equiv="refresh" content="0;url=en/"><title>Awesome FM-1</title></head><body><a href="en/">English</a> · <a href="pl/">Polski</a> · <a href="zh-CN/">简体中文</a></body></html>')
     print('Built English, Polish and Simplified Chinese pages in _site/')
 
 

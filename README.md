@@ -1,5 +1,7 @@
 # Awesome FM-1
 
+![Awesome FM-1 logo and icon](assets/branding/plansza.png)
+
 [![Catalog CI](https://github.com/ekim-pl/awesome-fm1/actions/workflows/catalog-ci.yml/badge.svg)](https://github.com/ekim-pl/awesome-fm1/actions/workflows/catalog-ci.yml)
 [![Website build](https://github.com/ekim-pl/awesome-fm1/actions/workflows/pages.yml/badge.svg)](https://github.com/ekim-pl/awesome-fm1/actions/workflows/pages.yml)
 [![Project website](https://img.shields.io/badge/website-awesome--fm1-blue)](https://ekim-pl.github.io/awesome-fm1/en/)

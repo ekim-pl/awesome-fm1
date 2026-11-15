@@ -2,3 +2,5 @@
 
 footer{flex-wrap:wrap}footer p{flex:1 1 350px}footer .footer-links{flex-basis:100%;margin:0;order:4;display:flex;flex-wrap:wrap;gap:12px 24px}footer .footer-links a{margin:0;color:var(--muted)}footer .footer-links a:hover{color:var(--accent)}
 header nav a{font-size:22px;line-height:1}header nav [aria-current]{text-decoration:none;box-shadow:0 2px var(--accent)}.github svg,footer svg{display:block;width:22px;height:22px}footer .footer-links{gap:20px}
+
+.brand img{display:block;width:200px;height:auto}
