@@ -8,3 +8,7 @@ header nav a{font-size:22px;line-height:1}header nav [aria-current]{text-decorat
 .footer-brand{display:flex;align-items:center;gap:8px}.footer-brand img{display:block;width:28px;height:28px;filter:grayscale(1);opacity:.65;transform:translateY(1.5px)}
 
 footer .personal-site-logo{display:block;width:70px;height:28px;object-fit:contain;transform:translateY(-1px)}
+
+footer .footer-links{border-top:1px solid var(--line);padding-top:24px}
+.flasher-promo{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}.flasher-promo img{display:block;width:100%;height:auto;border-radius:8px}.flasher-promo h2{margin:0}.flasher-promo p{max-width:500px}
+@media(max-width:760px){.flasher-promo{grid-template-columns:1fr;gap:24px}}
