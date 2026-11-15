@@ -95,7 +95,7 @@ Contributions can start with a link; maintainers can help with the catalog detai
 - Short description:
 - Author / publisher:
 - Project website:
-- Package URL (pkg) and/or repository URL:
+- Package URL and/or repository URL:
 - Release / version (if known):
 - FM-1 compatibility evidence (or "unknown"):
 - Your relationship to the project (author, user, or other):
