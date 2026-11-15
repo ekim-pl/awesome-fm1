@@ -1,8 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 256">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
   <g fill="#d1ff32">
     <path d="M66.1 105 101 24h54l34.9 81h-39.6L128 54l-22.3 51zM39.8 166h39.2l-17 39H23zM177 166h39.2l16.8 39h-39z"/>
   </g>
   <path d="M16 140h43v-22h27v22h27v-22h27v22h27v-22h27v22h46" fill="none" stroke="#d1ff32" stroke-width="10" stroke-linejoin="round"/>
-  <text x="265" y="112" fill="#e8f2df" font-family="Arial, sans-serif" font-size="78" font-weight="800" letter-spacing="-3">AWESOME</text>
-  <text x="265" y="211" fill="#d1ff32" font-family="Arial, sans-serif" font-size="116" font-weight="800" letter-spacing="-3">FM-1</text>
 </svg>
