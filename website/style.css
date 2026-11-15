@@ -6,3 +6,5 @@ header nav a{font-size:22px;line-height:1}header nav [aria-current]{text-decorat
 .brand{display:flex;align-items:center;gap:6px;white-space:nowrap}.brand img{display:block;width:48px;height:48px;transform:translateY(2.5px)}
 
 .footer-brand{display:flex;align-items:center;gap:8px}.footer-brand img{display:block;width:28px;height:28px;filter:grayscale(1);opacity:.65;transform:translateY(1.5px)}
+
+footer .personal-site-logo{display:block;width:70px;height:28px;object-fit:contain}
