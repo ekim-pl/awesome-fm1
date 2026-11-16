@@ -12,6 +12,8 @@ A companion project to [FM-1 Flasher](https://github.com/ekim-pl/android-fm1-fla
 
 Awesome FM-1 brings together publisher download links, project repositories, release information, and documented compatibility evidence in a consistent catalog. We welcome contributions from firmware authors, musicians, developers, and anyone who discovers a useful FM-1 project.
 
+Awesome FM-1 is independent and is not affiliated with the creators of the listed projects. We encourage you to visit their project pages and support their work.
+
 **Know a firmware project we should include? Open a pull request with its package URL or project repository URL.** A link and a short description are enough to start a review; a complete catalog entry is welcome too.
 
 This repository stores metadata, not firmware binaries. Packages remain hosted by their publishers. Inclusion identifies a source; it does not certify a firmware package or establish hardware compatibility.
@@ -27,6 +29,8 @@ This repository stores metadata, not firmware binaries. Packages remain hosted b
 | Project | Description | Publisher | Verification |
 | --- | --- | --- | --- |
 | [SHRUB](https://shrub.audio/) | Wavetable synthesizer with a browser editor | Xfer Inc. | Package structure checked; hardware compatibility unknown. See [verification evidence](docs/verification.md). |
+| [SLOOP](https://github.com/isod89/sloop-fm1) | Groovebox firmware | isod89 | Package identity and hash recorded; hardware compatibility unknown. See [verification evidence](docs/sloop-verification.md). |
+| [ChoralRoot](https://github.com/Quixotic7/ChoralRootFM1) | Chord instrument firmware | Quixotic7 | Package identity and hash recorded; hardware compatibility unknown. See [verification evidence](docs/choralroot-verification.md). |
 
 ## Use the catalogs
 
@@ -34,6 +38,8 @@ Choose the combined catalog for a single endpoint, or subscribe to individual pu
 
 - [catalog.json](catalog.json): the combined catalog, generated from `catalogs/*.json`. Recommended single endpoint: <https://raw.githubusercontent.com/ekim-pl/awesome-fm1/main/catalog.json>.
 - [catalogs/shrub.json](catalogs/shrub.json): a standalone publisher catalog in the same format. Alternative endpoint: <https://raw.githubusercontent.com/ekim-pl/awesome-fm1/main/catalogs/shrub.json>.
+- [catalogs/sloop.json](catalogs/sloop.json): the standalone SLOOP catalog. Endpoint: <https://raw.githubusercontent.com/ekim-pl/awesome-fm1/main/catalogs/sloop.json>.
+- [catalogs/choralroot.json](catalogs/choralroot.json): the standalone ChoralRoot catalog. Endpoint: <https://raw.githubusercontent.com/ekim-pl/awesome-fm1/main/catalogs/choralroot.json>.
 
 Use the combined catalog **or** selected individual catalogs. Subscribing to both creates overlapping offers; clients must not merge projects by name or device identity.
 
@@ -45,7 +51,7 @@ SHRUB is currently listed with `chip: "unknown"`. Its package passed the Android
 
 [third-party/catalog.json](third-party/catalog.json) is an automatically refreshed discovery list, separate from the reviewed firmware directory above. Candidate projects come from [2bbb's firmware collection](https://github.com/2bbb/fm1-firmware-collection) and the firmware section of [aroum's directory](https://github.com/aroum/fm1-custom-fw).
 
-The main [catalog.json](catalog.json) is generated only from `catalogs/*.json`. Its builder never reads `third-party/`, so this discovery list cannot add entries to or change the main catalog. The SHRUB entry above is a separately reviewed entry in the main catalog. This separation is checked by the catalog tests.
+The main [catalog.json](catalog.json) is generated only from `catalogs/*.json`. Its builder never reads `third-party/`, so this discovery list cannot add entries to or change the main catalog. The entries above are separately reviewed entries in the main catalog. This separation is checked by the catalog tests.
 
 Entries are unreviewed and may describe other devices, tools, unavailable projects or works in progress. Missing metadata remains null. It does **not** satisfy the installation catalog schema; do not use it by itself to authorize downloads or flashing.
 
