@@ -12,3 +12,7 @@ footer .personal-site-logo{display:block;width:70px;height:28px;object-fit:conta
 footer .footer-links{border-top:1px solid var(--line);padding-top:24px}
 .flasher-promo{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}.flasher-promo img{display:block;width:100%;height:auto;border-radius:8px}.flasher-promo h2{margin:0}.flasher-promo p{max-width:500px}
 @media(max-width:760px){.flasher-promo{grid-template-columns:1fr;gap:24px}}
+
+header nav{align-items:center}
+@media(max-width:760px){header{flex-wrap:nowrap;gap:12px}header nav{order:0;width:auto;margin-left:auto;gap:10px}.github{margin-left:0}}
+@media(max-width:420px){header{gap:8px}.brand{font-size:16px;gap:3px}.brand img{width:36px;height:36px}header nav{gap:6px}header nav a{font-size:18px}.github svg{width:20px;height:20px}}
