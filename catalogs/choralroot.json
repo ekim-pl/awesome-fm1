@@ -1,0 +1,23 @@
+{
+  "updated": "2026-11-16T13:26:18Z",
+  "firmwares": [
+    {
+      "id": "choralroot",
+      "name": "ChoralRoot",
+      "author": "Quixotic7",
+      "kind": "synth",
+      "what": "A chord instrument firmware for the M-VAVE FM-1.",
+      "version": "0.41",
+      "site": "https://github.com/Quixotic7/ChoralRootFM1",
+      "repo": "Quixotic7/ChoralRootFM1",
+      "tag": "v0.41",
+      "asset": "738712692",
+      "pkg": "https://github.com/Quixotic7/ChoralRootFM1/releases/download/v0.41/choralroot-0.41.fwsc",
+      "product": "FM-1_920",
+      "size": 676628,
+      "sha256": "8da570760712796eef54aa840f7acdaaf5fc5939bb8d46e8432efd1cd1ce0652",
+      "chip": "unknown",
+      "beta": false
+    }
+  ]
+}

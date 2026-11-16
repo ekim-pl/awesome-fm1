@@ -1,6 +1,24 @@
 {
-  "updated": "2026-11-16T08:20:18Z",
+  "updated": "2026-11-16T13:26:18Z",
   "firmwares": [
+    {
+      "id": "choralroot",
+      "name": "ChoralRoot",
+      "author": "Quixotic7",
+      "kind": "synth",
+      "what": "A chord instrument firmware for the M-VAVE FM-1.",
+      "version": "0.41",
+      "site": "https://github.com/Quixotic7/ChoralRootFM1",
+      "repo": "Quixotic7/ChoralRootFM1",
+      "tag": "v0.41",
+      "asset": "738712692",
+      "pkg": "https://github.com/Quixotic7/ChoralRootFM1/releases/download/v0.41/choralroot-0.41.fwsc",
+      "product": "FM-1_920",
+      "size": 676628,
+      "sha256": "8da570760712796eef54aa840f7acdaaf5fc5939bb8d46e8432efd1cd1ce0652",
+      "chip": "unknown",
+      "beta": false
+    },
     {
       "id": "shrub",
       "name": "SHRUB",
@@ -20,6 +38,24 @@
       "sha256": "0097468bde8c0e863aca8648745d7213893d188319dad7e1e918bbfd71133e1e",
       "chip": "unknown",
       "beta": true
+    },
+    {
+      "id": "sloop",
+      "name": "SLOOP",
+      "author": "isod89",
+      "kind": "synth",
+      "what": "A groovebox firmware for the M-VAVE FM-1.",
+      "version": "2.8.5",
+      "site": "https://github.com/isod89/sloop-fm1",
+      "repo": "isod89/sloop-fm1",
+      "tag": "v2.8.5",
+      "asset": "707958195",
+      "pkg": "https://github.com/isod89/sloop-fm1/releases/download/v2.8.5/sloop-2.8.5.fwsc",
+      "product": "FM-1_900",
+      "size": 610076,
+      "sha256": "b0446effb840740a3aa5c386ce004e79334e4f833d48d82a9eb5edbfde92ae67",
+      "chip": "unknown",
+      "beta": false
     }
   ]
 }
