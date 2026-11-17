@@ -1,0 +1,16 @@
+name: Suggest a firmware project
+description: Share a publisher's FM-1 firmware project or release.
+title: "Firmware source: "
+body:
+  - type: input
+    id: source
+    attributes:
+      label: Publisher or release URL
+      description: Link to the original publisher or a release.
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: Project details
+      description: Add the project name, what it does, and any known license or hardware test evidence.

@@ -1,0 +1,83 @@
+name: Prepare publisher catalog updates
+
+on:
+  schedule:
+    - cron: '43 4 * * *'
+  workflow_dispatch:
+    inputs:
+      project:
+        description: Project ID to refresh (blank refreshes all configured publishers)
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: publisher-updates
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements-dev.txt
+      - name: Prepare publisher updates
+        env:
+          PROJECT: ${{ inputs.project }}
+        run: |
+          args=()
+          if [[ -n "$PROJECT" ]]; then args+=(-- "$PROJECT"); fi
+          python scripts/import_publishers.py "${args[@]}"
+          python scripts/repository.py --check
+          git diff --binary -- projects/ catalogs/ catalog.json > publisher-updates.patch
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: publisher-updates
+          path: publisher-updates.patch
+          if-no-files-found: error
+
+  propose:
+    if: vars.FM1_UPDATE_PRS == 'true'
+    needs: refresh
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: publisher-updates
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements-dev.txt
+      - name: Open a review PR
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if [[ ! -s publisher-updates.patch ]]; then exit 0; fi
+          open=$(gh pr list --limit 100 --base main --json headRefName \
+            --jq 'any(.[]; .headRefName | startswith("automation/publisher-updates-"))')
+          if [[ "$open" == true ]]; then
+            echo "An update PR is already open. The new patch is available in this run's artifacts."
+            exit 0
+          fi
+          git apply --index --include='projects/*.json' --include='catalogs/*.json' --include=catalog.json publisher-updates.patch
+          python scripts/repository.py --check
+          branch="automation/publisher-updates-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
+          git switch -c "$branch"
+          git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' \
+            commit -m 'Propose reviewed firmware catalog updates'
+          git push origin "$branch"
+          gh pr create --base main --head "$branch" --title 'Update firmware releases' \
+            --body 'Publisher importer candidates. Review provenance, artifact hashes, channel, and hardware compatibility before merging.'
