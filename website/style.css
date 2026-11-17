@@ -18,3 +18,5 @@ header nav{align-items:center}
 @media(max-width:420px){header{gap:8px}.brand{font-size:16px;gap:3px}.brand img{width:36px;height:36px}header nav{gap:6px}header nav a{font-size:18px}.github svg{width:20px;height:20px}}
 
 .flasher-promo .store-badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}.flasher-promo .store-badges img{width:auto;height:28px;border-radius:0}
+
+header nav a:not([aria-current]){filter:grayscale(1);opacity:.65}
