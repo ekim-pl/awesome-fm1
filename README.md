@@ -43,6 +43,8 @@ Choose the combined catalog for a single endpoint, or subscribe to individual pu
 
 Use the combined catalog **or** selected individual catalogs. Subscribing to both creates overlapping offers; clients must not merge projects by name or device identity.
 
+Once signed publishing is configured, GitHub Releases provides the [latest signed snapshot](https://github.com/ekim-pl/awesome-fm1/releases/latest/download/entry.json) for clients that support repository signatures. Each catalog release also includes the generated `catalog.json` for legacy clients. See the [repository guide](docs/firmware-repository.md#publish-a-signed-repository) for setup and verification.
+
 FM-1 Flasher includes The Firmware Hub and Awesome FM-1 as built-in sources (Hub enabled and Awesome FM-1 disabled by default), and supports custom JSON catalog subscriptions. The `third-party` discovery feed is separate and is not compatible with the app’s catalog importer.
 
 SHRUB is currently listed with `chip: "unknown"`. Its package passed the Android app's structural parser, but installation, subsequent updates, and old/new flash compatibility have not been tested. FM-1 Flasher normally blocks installation when compatibility is unknown; its separate force option requires explicit confirmation.

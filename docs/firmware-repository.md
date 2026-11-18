@@ -1,6 +1,6 @@
 # Awesome FM-1 firmware repository
 
-Awesome FM-1 keeps reviewed firmware metadata in Git. GitHub Actions checks pull requests, prepares publisher updates and publishes a static repository through GitHub Pages. Firmware files stay at the listed publisher URLs. Each project keeps its own release history so reviews can distinguish a new release, a replacement download and a withdrawal.
+Awesome FM-1 keeps reviewed firmware metadata in Git. GitHub Actions checks pull requests, prepares publisher updates and publishes catalog snapshots through GitHub Releases and GitHub Pages. Firmware files stay at the listed publisher URLs. Each project keeps its own release history so reviews can distinguish a new release, a replacement download and a withdrawal.
 
 ## Contribute a project or release
 
@@ -36,7 +36,7 @@ The **Prepare publisher catalog updates** workflow runs daily and accepts a proj
 
 ## Publish a signed repository
 
-Configure Pages to deploy with GitHub Actions. Set the `github-pages` environment to allow deployments from `main`. Create an Ed25519 key outside the checkout and record its SHA-256 fingerprint over the DER SubjectPublicKeyInfo.
+Set the `github-pages` environment to allow deployments from `main`. For the website, configure Pages to deploy with GitHub Actions. Create an Ed25519 key outside the checkout and record its SHA-256 fingerprint over the DER SubjectPublicKeyInfo.
 
 ```sh
 umask 077
@@ -47,7 +47,11 @@ openssl pkey -in /secure/path/fm1-repository.pem -pubout -outform DER \
 
 Add the PEM as the `FM1_REPO_PRIVATE_KEY` secret in the `github-pages` environment. Add the lowercase 64-character fingerprint as repository variable `FM1_REPO_FINGERPRINT` and set `FM1_REPO_SIGNING_ENABLED=true`. Keep a secure backup of the private key and protect changes to the main branch and publication workflow. Forks can configure their own [repository ID and homepage](../config/repository.json), Pages deployment and signing key. Update the fork's CODEOWNERS if using required owner reviews.
 
-Run the **GitHub Pages** workflow from `main`. It publishes `repo/v1/index.json` for inspection and, with signing enabled, `repo/v1/entry.json` for clients. The workflow renews the signed snapshot at least once a week when scheduled GitHub jobs run. Run it manually after an interrupted schedule. The copy of the key inside the entry lets clients verify a fingerprint obtained independently. Share the fingerprint separately from the deployment, or bundle it in a trusted app release.
+Run the **GitHub Pages** workflow from `main`. With signing enabled, the build produces one signed `entry.json`. One job publishes it to GitHub Releases with the generated legacy `catalog.json`, under a stable `catalog-<sequence>` tag pointing to the source commit. The release becomes Latest after its assets upload. A separate job publishes the same signed entry at `repo/v1/entry.json` on Pages, alongside the standalone index at `repo/v1/index.json`. The release job can succeed independently of Pages deployment.
+
+Subscribers can use the [Latest release entry](https://github.com/ekim-pl/awesome-fm1/releases/latest/download/entry.json) or a URL for a specific catalog tag. Reserve GitHub's repository-wide Latest slot for catalog releases. Older clients can use the [legacy release asset](https://github.com/ekim-pl/awesome-fm1/releases/latest/download/catalog.json) or the existing catalog URLs. Signed clients keep their last verified snapshot if refresh fails.
+
+The workflow signs reviewed data from `main` on production builds, including its weekly renewal schedule. To retry after a failure, rerun all jobs or start a new run from `main` so publication uses a fresh snapshot. Share the key fingerprint independently or bundle it in a trusted app release.
 
 For a local smoke test, use a disposable Ed25519 key and run these commands. Set `FM1_REPO_FINGERPRINT` to its fingerprint.
 
