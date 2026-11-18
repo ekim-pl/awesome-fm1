@@ -11,9 +11,9 @@
     "editor": "https://shrub.audio/editor/",
     "install": "https://shrub.audio/editor/install"
   },
-  "updated": "2026-11-16T08:20:18Z",
+  "updated": "2026-11-18T17:06:54Z",
   "recommended": {
-    "release": "1.07",
+    "release": "1.14",
     "artifact": "default"
   },
   "releases": [
@@ -34,10 +34,41 @@
             "type": "direct"
           },
           "mutable": true,
-          "available": true,
+          "available": false,
           "evidence": [
             "docs/verification.md"
           ]
+        }
+      ]
+    },
+    {
+      "id": "1.14",
+      "version": "1.14",
+      "channel": "beta",
+      "artifacts": [
+        {
+          "id": "default",
+          "format": "fwsc",
+          "url": "https://shrub.audio/editor/firmware/SHRUB.fwsc",
+          "size": 689940,
+          "sha256": "b8e874a92d3c05456303f68510c6ef182e996fad89f8750b5ff4fee02d7a7e3e",
+          "product": "FM-1_901",
+          "legacyChip": "unknown",
+          "upstream": {
+            "type": "direct",
+            "commit": "8ea7b6d"
+          },
+          "mutable": true,
+          "available": true,
+          "evidence": [
+            "https://shrub.audio/editor/build.json",
+            "https://shrub.audio/editor/install",
+            "docs/verification.md"
+          ],
+          "inspection": {
+            "checkedAt": "2026-11-18T17:06:54Z",
+            "method": "fwsc-structure-crc"
+          }
         }
       ]
     }

@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-16T13:26:18Z",
+  "updated": "2026-11-18T17:06:54Z",
   "firmwares": [
     {
       "id": "choralroot",
@@ -25,7 +25,7 @@
       "author": "Xfer Inc.",
       "kind": "synth",
       "what": "A wavetable synthesizer for the M-VAVE FM-1, with a browser editor.",
-      "version": "1.07",
+      "version": "1.14",
       "site": "https://shrub.audio/",
       "editor": "https://shrub.audio/editor/",
       "install": "https://shrub.audio/editor/install",
@@ -34,8 +34,8 @@
       "asset": null,
       "pkg": "https://shrub.audio/editor/firmware/SHRUB.fwsc",
       "product": "FM-1_901",
-      "size": 615816,
-      "sha256": "0097468bde8c0e863aca8648745d7213893d188319dad7e1e918bbfd71133e1e",
+      "size": 689940,
+      "sha256": "b8e874a92d3c05456303f68510c6ef182e996fad89f8750b5ff4fee02d7a7e3e",
       "chip": "unknown",
       "beta": true
     },
