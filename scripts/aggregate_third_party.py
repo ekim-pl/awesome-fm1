@@ -93,14 +93,18 @@ def plain_text(text):
     return " ".join(html.unescape(text).replace("**", "").replace("`", "").replace(r"\|", "|").split())
 
 
-def parse_aroum(text):
-    section = re.search(r"^## 1\. Custom[^\n]*\n(.*?)(?=^## 2\. )", text, re.M | re.S)
+def aroum_firmware_lines(text):
+    section = re.search(r"^## 1\. Custom[^\n]*\n(.*?)(?=^#{1,2}[ \t]+\S|\Z)", text, re.M | re.S)
     if section is None:
         raise ValueError("Cannot find aroum firmware section; README structure changed")
+    return section[1].splitlines()
+
+
+def parse_aroum(text):
     entries, skipped = [], []
     heading = ""
     # shortcut: upstream currently uses single-line table rows; reject an empty parse on layout changes.
-    for line in section[1].splitlines():
+    for line in aroum_firmware_lines(text):
         if line.startswith("###"):
             heading = line.lstrip("# ")
         if not re.match(r"\|\s*\d+\s*\|", line):
@@ -299,13 +303,10 @@ def clean_catalog(catalog, hub, exclude_hub=False, unique_code=False, unique_nam
 
 
 def add_projects_without_git(catalog, hub, readme, exclude_hub):
-    section = re.search(r"^## 1\. Custom[^\n]*\n(.*?)(?=^## 2\. )", readme, re.M | re.S)
-    if not section:
-        raise ValueError("Cannot find aroum firmware section")
     hub_names = {r['name'].casefold() for r in firmware_rows(hub, 'TheFirmwareHub') if r.get('name')}
     existing = {r['name'].casefold() for r in catalog['firmwares'] if r.get('name')}
     added = []
-    for line in section[1].splitlines():
+    for line in aroum_firmware_lines(readme):
         if not re.match(r"\|\s*\d+\s*\|", line):
             continue
         columns = re.split(r"(?<!\\)\|", line)

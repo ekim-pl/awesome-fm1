@@ -45,6 +45,14 @@ class CatalogTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             catalog.parse_aroum("# Different layout")
 
+    def test_aroum_firmware_section_at_end_of_readme(self):
+        readme = README.split("## 2. Hardware")[0].replace("| 2 |", "##\n| 2 |")
+        self.assertEqual(catalog.parse_aroum(readme), catalog.parse_aroum(README))
+        data = {"firmwares": [], "aggregation": {"counts": {}}}
+        hub = {"firmwares": [{"repo": "other/tool"}]}
+        catalog.add_projects_without_git(data, hub, readme, False)
+        self.assertEqual([row["name"] for row in data["firmwares"]], ["No repo"])
+
     def test_merge_redirects_forks_variants_and_unknowns(self):
         rows, skipped = catalog.parse_aroum(README)
         rows += [{"repo": "alice/old", "name": "Old"}, {"repo": "alice/missing", "name": "Missing"}]
