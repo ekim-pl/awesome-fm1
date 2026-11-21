@@ -1,0 +1,76 @@
+{
+  "id": "shrub",
+  "name": "SHRUB",
+  "author": "Xfer Inc.",
+  "summary": "A wavetable synthesizer for the M-VAVE FM-1, with a browser editor.",
+  "categories": [
+    "synth"
+  ],
+  "links": {
+    "site": "https://shrub.audio/",
+    "editor": "https://shrub.audio/editor/",
+    "install": "https://shrub.audio/editor/install"
+  },
+  "updated": "2026-11-18T17:06:54Z",
+  "recommended": {
+    "release": "1.14",
+    "artifact": "default"
+  },
+  "releases": [
+    {
+      "id": "1.07",
+      "version": "1.07",
+      "channel": "beta",
+      "artifacts": [
+        {
+          "id": "default",
+          "format": "fwsc",
+          "url": "https://shrub.audio/editor/firmware/SHRUB.fwsc",
+          "size": 615816,
+          "sha256": "0097468bde8c0e863aca8648745d7213893d188319dad7e1e918bbfd71133e1e",
+          "product": "FM-1_901",
+          "legacyChip": "unknown",
+          "upstream": {
+            "type": "direct"
+          },
+          "mutable": true,
+          "available": false,
+          "evidence": [
+            "docs/verification.md"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1.14",
+      "version": "1.14",
+      "channel": "beta",
+      "artifacts": [
+        {
+          "id": "default",
+          "format": "fwsc",
+          "url": "https://shrub.audio/editor/firmware/SHRUB.fwsc",
+          "size": 689940,
+          "sha256": "b8e874a92d3c05456303f68510c6ef182e996fad89f8750b5ff4fee02d7a7e3e",
+          "product": "FM-1_901",
+          "legacyChip": "unknown",
+          "upstream": {
+            "type": "direct",
+            "commit": "8ea7b6d"
+          },
+          "mutable": true,
+          "available": true,
+          "evidence": [
+            "https://shrub.audio/editor/build.json",
+            "https://shrub.audio/editor/install",
+            "docs/verification.md"
+          ],
+          "inspection": {
+            "checkedAt": "2026-11-18T17:06:54Z",
+            "method": "fwsc-structure-crc"
+          }
+        }
+      ]
+    }
+  ]
+}

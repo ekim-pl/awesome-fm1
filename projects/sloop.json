@@ -1,0 +1,46 @@
+{
+  "id": "sloop",
+  "name": "SLOOP",
+  "author": "isod89",
+  "summary": "A groovebox firmware for the M-VAVE FM-1.",
+  "categories": [
+    "synth"
+  ],
+  "links": {
+    "site": "https://github.com/isod89/sloop-fm1"
+  },
+  "updated": "2026-11-16T13:26:18Z",
+  "recommended": {
+    "release": "v2.8.5",
+    "artifact": "default"
+  },
+  "releases": [
+    {
+      "id": "v2.8.5",
+      "version": "2.8.5",
+      "channel": "stable",
+      "artifacts": [
+        {
+          "id": "default",
+          "format": "fwsc",
+          "url": "https://github.com/isod89/sloop-fm1/releases/download/v2.8.5/sloop-2.8.5.fwsc",
+          "size": 610076,
+          "sha256": "b0446effb840740a3aa5c386ce004e79334e4f833d48d82a9eb5edbfde92ae67",
+          "product": "FM-1_900",
+          "legacyChip": "unknown",
+          "upstream": {
+            "type": "github-release",
+            "repository": "isod89/sloop-fm1",
+            "tag": "v2.8.5",
+            "assetId": "707958195"
+          },
+          "mutable": false,
+          "available": true,
+          "evidence": [
+            "docs/sloop-verification.md"
+          ]
+        }
+      ]
+    }
+  ]
+}

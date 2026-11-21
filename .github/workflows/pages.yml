@@ -5,6 +5,8 @@ on:
     branches: [main]
   pull_request:
   workflow_dispatch:
+  schedule:
+    - cron: '27 5 * * 1'
   workflow_run:
     workflows: ['Refresh third-party catalog']
     types: [completed]
@@ -14,29 +16,92 @@ permissions:
   contents: read
 
 concurrency:
-  group: pages-${{ github.ref }}
-  cancel-in-progress: true
+  group: pages-${{ github.event_name == 'pull_request' && github.ref || 'production' }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
-  build:
-    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
+  check:
+    if: github.event_name == 'pull_request'
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
         with:
           persist-credentials: false
+      - run: python3 scripts/build_site.py
+  build:
+    if: >-
+      github.ref == 'refs/heads/main' && github.event_name != 'pull_request' &&
+      (github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success')
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    environment: github-pages
+    outputs:
+      commit: ${{ steps.checkout.outputs.commit }}
+      sequence: ${{ steps.sign.outputs.sequence }}
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        id: checkout
+        with:
+          ref: refs/heads/main
+          persist-credentials: false
       - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
         with:
           python-version: '3.12'
+      - run: python -m pip install -r requirements-dev.txt
       - run: python scripts/build_site.py
-      - uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # v4
-        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+      - run: python scripts/repository.py --check --index _site/repo/v1/index.json
+      - name: Sign firmware repository
+        id: sign
+        if: vars.FM1_REPO_SIGNING_ENABLED == 'true'
+        env:
+          FM1_REPO_PRIVATE_KEY: ${{ secrets.FM1_REPO_PRIVATE_KEY }}
+          FM1_REPO_FINGERPRINT: ${{ vars.FM1_REPO_FINGERPRINT }}
+        run: |
+          sequence=$(python -c 'import time; print(time.time_ns() // 1_000_000)')
+          python scripts/sign_repository.py sign _site/repo/v1/entry.json --sequence "$sequence"
+          mkdir "$RUNNER_TEMP/firmware-catalog"
+          cp _site/repo/v1/entry.json _site/catalog.json "$RUNNER_TEMP/firmware-catalog"
+          echo "sequence=$sequence" >> "$GITHUB_OUTPUT"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        if: steps.sign.outputs.sequence != ''
         with:
+          name: firmware-catalog-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/firmware-catalog/
+          if-no-files-found: error
+          retention-days: 1
+      - uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # v4
+        with:
+          name: github-pages-${{ github.run_attempt }}
           path: _site
-  deploy:
-    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+
+  publish-release:
+    needs: build
+    if: needs.build.outputs.sequence != ''
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        with:
+          name: firmware-catalog-${{ github.run_attempt }}
+          path: firmware-catalog
+      - name: Publish the signed catalog as latest
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CATALOG_COMMIT: ${{ needs.build.outputs.commit }}
+          CATALOG_SEQUENCE: ${{ needs.build.outputs.sequence }}
+        run: |
+          gh release create "catalog-$CATALOG_SEQUENCE" \
+            firmware-catalog/entry.json firmware-catalog/catalog.json \
+            --repo "$GITHUB_REPOSITORY" --target "$CATALOG_COMMIT" --latest \
+            --title "Firmware catalog $CATALOG_SEQUENCE" \
+            --notes 'Download entry.json with a signed-repository client. Legacy clients can use catalog.json.'
+
+  publish-pages:
     needs: build
     runs-on: ubuntu-24.04
+    timeout-minutes: 15
     permissions:
       pages: write
       id-token: write
@@ -45,5 +110,7 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5
-      - uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4
+      - uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0ebac5b3c0c03e # v4
         id: deployment
+        with:
+          artifact_name: github-pages-${{ github.run_attempt }}

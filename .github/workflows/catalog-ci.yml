@@ -21,4 +21,5 @@ jobs:
           python-version: '3.12'
       - run: python -m pip install -r requirements-dev.txt
       - run: python scripts/catalog.py --check
+      - run: python scripts/repository.py --check
       - run: python -m unittest discover -s tests -v
