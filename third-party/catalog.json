@@ -5,7 +5,7 @@
     "attribution": "Firmware list: The Firmware Hub – https://thefirmwarehub.com",
     "terms": "Name The Firmware Hub with its address: a working link to https://thefirmwarehub.com where links work; on a device without a browser the address written out where people see it (the list's title or info screen, About). Card texts and pictures belong to their makers (their fmhub.json and repositories), not under this licence: name each maker and link its repository. Read this file at most once a day; rules: https://thefirmwarehub.com/kb/#catalog"
   },
-  "updated": "2026-11-23 13:02 UTC",
+  "updated": "2026-11-24 13:52 UTC",
   "firmwares": [
     {
       "id": "github-1andesc__fm1-firmware-downloader",
@@ -434,104 +434,6 @@
             "needs_ci_build": false,
             "buildable": false,
             "path": "firmwares/aarongrando/JamesOS",
-            "status": "ok"
-          }
-        ]
-      }
-    },
-    {
-      "id": "github-abektes__a22",
-      "kind": null,
-      "name": "a22",
-      "author": "abektes",
-      "repo": "abektes/a22",
-      "ident": null,
-      "what": "A22: FM workstation firmware for the M-VAVE FM-1, derived from h1",
-      "editor": null,
-      "play": null,
-      "added": null,
-      "loader": null,
-      "cheat": null,
-      "install": null,
-      "card": null,
-      "color": null,
-      "vintage": null,
-      "ambient": null,
-      "fmhub": null,
-      "stars": 11,
-      "talk": null,
-      "lic": "MIT",
-      "starsDay": null,
-      "site": "https://github.com/abektes/a22",
-      "version": null,
-      "date": null,
-      "published": null,
-      "pkg": null,
-      "product": null,
-      "size": null,
-      "sha256": null,
-      "release": null,
-      "tag": null,
-      "srcref": null,
-      "mirror": null,
-      "beta": null,
-      "hid": null,
-      "chip": null,
-      "base": null,
-      "dinghy": null,
-      "dinghyv": null,
-      "source": "https://github.com/abektes/a22",
-      "catalog_meta": {
-        "sources": [
-          "https://raw.githubusercontent.com/2bbb/fm1-firmware-collection/main/catalog/firmwares.json"
-        ],
-        "aliases": [],
-        "aroum": [],
-        "collection": [
-          {
-            "id": "abektes__a22",
-            "repo": "abektes/a22",
-            "url": "https://github.com/abektes/a22",
-            "description": "A22: FM workstation firmware for the M-VAVE FM-1, derived from h1",
-            "sources": [
-              "search"
-            ],
-            "hub": null,
-            "license": "MIT",
-            "redistributable": true,
-            "fork_of": null,
-            "archived": false,
-            "stars": 11,
-            "pushed": "2026-11-23T12:15:16Z",
-            "branch": "main",
-            "head": "4c0eb47c7e96e9c88b5934b8dbc746fefdaad6bc",
-            "has_submodules": true,
-            "auto_recipe": "build-sh",
-            "recipe": "build-sh",
-            "prepare": null,
-            "upstream_releases": [
-              {
-                "tag": "v0.4.0",
-                "name": "a22-0.4.0.fwsc",
-                "url": "https://github.com/abektes/a22/releases/download/v0.4.0/a22-0.4.0.fwsc",
-                "size": 616003,
-                "prerelease": false,
-                "published": "2026-11-22T15:46:03Z"
-              },
-              {
-                "tag": "v0.1.0",
-                "name": "a22-0.1.0.fwsc",
-                "url": "https://github.com/abektes/a22/releases/download/v0.1.0/a22-0.1.0.fwsc",
-                "size": 616003,
-                "prerelease": false,
-                "published": "2026-11-21T19:07:52Z"
-              }
-            ],
-            "tree_fwsc": [],
-            "has_build": true,
-            "needs_ci_build": false,
-            "buildable": true,
-            "path": "firmwares/abektes/a22",
             "status": "ok"
           }
         ]
@@ -21404,8 +21306,8 @@
     {
       "id": "github-joelio__melisma-fm1",
       "kind": null,
-      "name": "melisma-fm1",
-      "author": "joelio",
+      "name": "Melisma",
+      "author": "Merlin Engines (joelio)",
       "repo": "joelio/melisma-fm1",
       "ident": null,
       "what": "Melisma: a four-piece band you sit in with. Open-source firmware for the M-VAVE FM-1 pocket synth. A Merlin Engines instrument.",
@@ -21445,10 +21347,19 @@
       "source": "https://github.com/joelio/melisma-fm1",
       "catalog_meta": {
         "sources": [
-          "https://raw.githubusercontent.com/2bbb/fm1-firmware-collection/main/catalog/firmwares.json"
+          "https://raw.githubusercontent.com/2bbb/fm1-firmware-collection/main/catalog/firmwares.json",
+          "https://raw.githubusercontent.com/aroum/fm1-custom-fw/main/README.md"
         ],
         "aliases": [],
-        "aroum": [],
+        "aroum": [
+          {
+            "repo": "joelio/melisma-fm1",
+            "name": "Melisma",
+            "author": "Merlin Engines (joelio)",
+            "what": "Concept: A four-piece generative band you sit in with (FM-1_165010). You choose a mood, an energy, a style and a shape in plain words, and the firmware writes and plays bass, chords, melody and drums; take any seat and play along on keys that only offer notes that fit. Made for musicians who don't read traditional sheet music. Features: • Generative Band: 12 styles (house, boom-bap, funk, reggae, bossa, salsa, jazz, train beat, motorik, drum and bass, ambient, free), completely deterministic so identical settings yield reproducible songs. • No Wrong Notes: Four key layouts (from five always-safe notes to full piano), plus optional time lock that quantizes live key playing to the groove. • 94 Synthesized Instruments: FM and virtual-analog voices (all synthesized, zero sample memory) through chorus and five reverb spaces. • Live Performance & Sharing: Bar-synced mutes/solos, fills, builds, 5 sections, 8 scenes, phrase loop recorder with undo; entire songs shareable via 21-character alphanumeric codes (64 built-in songs and 14-step on-device tutorial). • Hardware: v1.0, verified and in regular use on FM-1 hardware with the newer UC25HQ80 (0xB36014) flash chip.",
+            "section": "1.1.4. Independent & Original Engine Firmwares"
+          }
+        ],
         "collection": [
           {
             "id": "joelio__melisma-fm1",
@@ -22362,123 +22273,6 @@
             "needs_ci_build": false,
             "buildable": false,
             "path": "firmwares/Joolo09/zombie-fm1-web",
-            "status": "ok"
-          }
-        ]
-      }
-    },
-    {
-      "id": "github-josh-mcfarlin__boopbox",
-      "kind": null,
-      "name": "boopbox",
-      "author": "josh-mcfarlin",
-      "repo": "josh-mcfarlin/boopbox",
-      "ident": null,
-      "what": "A live groovebox firmware for the M-VAVE FM-1",
-      "editor": null,
-      "play": null,
-      "added": null,
-      "loader": null,
-      "cheat": null,
-      "install": null,
-      "card": null,
-      "color": null,
-      "vintage": null,
-      "ambient": null,
-      "fmhub": null,
-      "stars": 2,
-      "talk": null,
-      "lic": "GPL-3.0",
-      "starsDay": null,
-      "site": "https://github.com/josh-mcfarlin/boopbox",
-      "version": null,
-      "date": null,
-      "published": null,
-      "pkg": null,
-      "product": null,
-      "size": null,
-      "sha256": null,
-      "release": null,
-      "tag": null,
-      "srcref": null,
-      "mirror": null,
-      "beta": null,
-      "hid": null,
-      "chip": null,
-      "base": null,
-      "dinghy": null,
-      "dinghyv": null,
-      "source": "https://github.com/josh-mcfarlin/boopbox",
-      "catalog_meta": {
-        "sources": [
-          "https://raw.githubusercontent.com/2bbb/fm1-firmware-collection/main/catalog/firmwares.json"
-        ],
-        "aliases": [],
-        "aroum": [],
-        "collection": [
-          {
-            "id": "Josh-McFarlin__boopbox",
-            "repo": "Josh-McFarlin/boopbox",
-            "url": "https://github.com/Josh-McFarlin/boopbox",
-            "description": "A live groovebox firmware for the M-VAVE FM-1",
-            "sources": [
-              "search"
-            ],
-            "hub": null,
-            "license": "GPL-3.0",
-            "redistributable": true,
-            "fork_of": null,
-            "archived": false,
-            "stars": 2,
-            "pushed": "2026-11-23T04:58:28Z",
-            "branch": "main",
-            "head": "f07f968d94e72acfc21a3ff2c8a4417176a9debb",
-            "has_submodules": false,
-            "auto_recipe": "none",
-            "recipe": "none",
-            "prepare": null,
-            "upstream_releases": [
-              {
-                "tag": "v1.9.10",
-                "name": "boopbox-1.9.10.fwsc",
-                "url": "https://github.com/Josh-McFarlin/boopbox/releases/download/v1.9.10/boopbox-1.9.10.fwsc",
-                "size": 610283,
-                "prerelease": false,
-                "published": "2026-11-23T01:37:53Z"
-              },
-              {
-                "tag": "v1.9.10",
-                "name": "boopbox-trainer-1.9.10.fwsc",
-                "url": "https://github.com/Josh-McFarlin/boopbox/releases/download/v1.9.10/boopbox-trainer-1.9.10.fwsc",
-                "size": 610283,
-                "prerelease": false,
-                "published": "2026-11-23T01:37:53Z"
-              },
-              {
-                "tag": "v1.9.9",
-                "name": "boopbox-1.9.9.fwsc",
-                "url": "https://github.com/Josh-McFarlin/boopbox/releases/download/v1.9.9/boopbox-1.9.9.fwsc",
-                "size": 610283,
-                "prerelease": false,
-                "published": "2026-11-23T01:04:43Z"
-              }
-            ],
-            "tree_fwsc": [
-              "project/firmware/releases/boopbox-1.9.10.fwsc",
-              "project/firmware/releases/boopbox-1.9.4.fwsc",
-              "project/firmware/releases/boopbox-1.9.5.fwsc",
-              "project/firmware/releases/boopbox-1.9.6.fwsc",
-              "project/firmware/releases/boopbox-1.9.7.fwsc",
-              "project/firmware/releases/boopbox-1.9.8.fwsc",
-              "project/firmware/releases/boopbox-1.9.9.fwsc",
-              "project/firmware/releases/boopbox-trainer-1.9.10.fwsc",
-              "project/firmware/releases/boopbox-trainer-1.9.4.fwsc",
-              "project/firmware/releases/boopbox-trainer-1.9.5.fwsc"
-            ],
-            "has_build": true,
-            "needs_ci_build": false,
-            "buildable": false,
-            "path": "firmwares/Josh-McFarlin/boopbox",
             "status": "ok"
           }
         ]
@@ -43354,87 +43148,6 @@
       }
     },
     {
-      "id": "github-track-forge__bgirl-fm1",
-      "kind": null,
-      "name": "bgirl-fm1",
-      "author": "track-forge",
-      "repo": "track-forge/bgirl-fm1",
-      "ident": null,
-      "what": "an electro fm1 firmware ",
-      "editor": null,
-      "play": null,
-      "added": null,
-      "loader": null,
-      "cheat": null,
-      "install": null,
-      "card": null,
-      "color": null,
-      "vintage": null,
-      "ambient": null,
-      "fmhub": null,
-      "stars": 0,
-      "talk": null,
-      "lic": "GPL-3.0",
-      "starsDay": null,
-      "site": "https://github.com/track-forge/bgirl-fm1",
-      "version": null,
-      "date": null,
-      "published": null,
-      "pkg": null,
-      "product": null,
-      "size": null,
-      "sha256": null,
-      "release": null,
-      "tag": null,
-      "srcref": null,
-      "mirror": null,
-      "beta": null,
-      "hid": null,
-      "chip": null,
-      "base": null,
-      "dinghy": null,
-      "dinghyv": null,
-      "source": "https://github.com/track-forge/bgirl-fm1",
-      "catalog_meta": {
-        "sources": [
-          "https://raw.githubusercontent.com/2bbb/fm1-firmware-collection/main/catalog/firmwares.json"
-        ],
-        "aliases": [],
-        "aroum": [],
-        "collection": [
-          {
-            "id": "track-forge__bgirl-fm1",
-            "repo": "track-forge/bgirl-fm1",
-            "url": "https://github.com/track-forge/bgirl-fm1",
-            "description": "an electro fm1 firmware ",
-            "sources": [
-              "search"
-            ],
-            "hub": null,
-            "license": "GPL-3.0",
-            "redistributable": true,
-            "fork_of": null,
-            "archived": false,
-            "stars": 0,
-            "pushed": "2026-11-23T01:27:49Z",
-            "branch": "main",
-            "head": "9b9b3e6c976fcc107c06db48100b7ad4b1dada33",
-            "has_submodules": true,
-            "auto_recipe": "build-sh",
-            "recipe": "build-sh",
-            "prepare": null,
-            "upstream_releases": [],
-            "tree_fwsc": [],
-            "has_build": false,
-            "needs_ci_build": true,
-            "buildable": true,
-            "path": "firmwares/track-forge/bgirl-fm1",
-            "status": "ok"
-          }
-        ]
-      }
-    },
-    {
       "id": "github-tristanosuriani__bluehare",
       "kind": null,
       "name": "Blue Hare",
@@ -44699,112 +44412,6 @@
       }
     },
     {
-      "id": "github-virusiinstaller__nano-freak-fm1",
-      "kind": null,
-      "name": "nano-freak-fm1",
-      "author": "virusiinstaller",
-      "repo": "virusiinstaller/nano-freak-fm1",
-      "ident": null,
-      "what": "Nano Freak: a uFreak-style synth for the M-Vave FM-1. Work in progress, built on FMini-1 and Felucca (GPL-3.0).",
-      "editor": null,
-      "play": null,
-      "added": null,
-      "loader": null,
-      "cheat": null,
-      "install": null,
-      "card": null,
-      "color": null,
-      "vintage": null,
-      "ambient": null,
-      "fmhub": null,
-      "stars": 0,
-      "talk": null,
-      "lic": "GPL-3.0",
-      "starsDay": null,
-      "site": "https://github.com/virusiinstaller/nano-freak-fm1",
-      "version": null,
-      "date": null,
-      "published": null,
-      "pkg": null,
-      "product": null,
-      "size": null,
-      "sha256": null,
-      "release": null,
-      "tag": null,
-      "srcref": null,
-      "mirror": null,
-      "beta": null,
-      "hid": null,
-      "chip": null,
-      "base": null,
-      "dinghy": null,
-      "dinghyv": null,
-      "source": "https://github.com/virusiinstaller/nano-freak-fm1",
-      "catalog_meta": {
-        "sources": [
-          "https://raw.githubusercontent.com/2bbb/fm1-firmware-collection/main/catalog/firmwares.json"
-        ],
-        "aliases": [],
-        "aroum": [],
-        "collection": [
-          {
-            "id": "Virusiinstaller__nano-freak-fm1",
-            "repo": "Virusiinstaller/nano-freak-fm1",
-            "url": "https://github.com/Virusiinstaller/nano-freak-fm1",
-            "description": "Nano Freak: a uFreak-style synth for the M-Vave FM-1. Work in progress, built on FMini-1 and Felucca (GPL-3.0).",
-            "sources": [
-              "search-fork"
-            ],
-            "hub": null,
-            "license": "GPL-3.0",
-            "redistributable": true,
-            "fork_of": "ruppert/fmini-1",
-            "archived": false,
-            "stars": 0,
-            "pushed": "2026-11-23T10:57:05Z",
-            "branch": "main",
-            "head": "822f60be03f78777704fc298e975c8de0836bae2",
-            "has_submodules": true,
-            "auto_recipe": "felucca",
-            "recipe": "felucca",
-            "prepare": null,
-            "upstream_releases": [
-              {
-                "tag": "Nano-Freak_V3.0.1",
-                "name": "nano-freak-smk37-mke-3.0.1.fwsc",
-                "url": "https://github.com/Virusiinstaller/nano-freak-fm1/releases/download/Nano-Freak_V3.0.1/nano-freak-smk37-mke-3.0.1.fwsc",
-                "size": 651329,
-                "prerelease": false,
-                "published": "2026-11-23T10:21:01Z"
-              },
-              {
-                "tag": "Nano-Freak_V3.0.1",
-                "name": "nano-freak-smk37-elite-3.0.1.fwsc",
-                "url": "https://github.com/Virusiinstaller/nano-freak-fm1/releases/download/Nano-Freak_V3.0.1/nano-freak-smk37-elite-3.0.1.fwsc",
-                "size": 651337,
-                "prerelease": false,
-                "published": "2026-11-23T10:21:01Z"
-              },
-              {
-                "tag": "Nano-Freak_V3.0.1",
-                "name": "nano-freak-smk37-3.0.1.fwsc",
-                "url": "https://github.com/Virusiinstaller/nano-freak-fm1/releases/download/Nano-Freak_V3.0.1/nano-freak-smk37-3.0.1.fwsc",
-                "size": 651333,
-                "prerelease": false,
-                "published": "2026-11-23T10:21:01Z"
-              }
-            ],
-            "tree_fwsc": [],
-            "has_build": true,
-            "needs_ci_build": false,
-            "buildable": true,
-            "path": "firmwares/Virusiinstaller/nano-freak-fm1",
-            "status": "ok"
-          }
-        ]
-      }
-    },
-    {
       "id": "github-vmphilemon-glitch__fm1-loom-kids",
       "kind": null,
       "name": "fm1-loom-kids",
@@ -45373,112 +44980,6 @@
             "needs_ci_build": false,
             "buildable": false,
             "path": "firmwares/wellingtonsaam/firmwave-mflasher-plus",
-            "status": "ok"
-          }
-        ]
-      }
-    },
-    {
-      "id": "github-wellingtonsaam__fm1-pocket-tutor",
-      "kind": null,
-      "name": "fm1-pocket-tutor",
-      "author": "wellingtonsaam",
-      "repo": "wellingtonsaam/fm1-pocket-tutor",
-      "ident": null,
-      "what": "Study firmware for the M-VAVE FM-1: the keys light up to show where to play, with a lessons page in Chrome (Web MIDI). GPL-3.0.",
-      "editor": null,
-      "play": null,
-      "added": null,
-      "loader": null,
-      "cheat": null,
-      "install": null,
-      "card": null,
-      "color": null,
-      "vintage": null,
-      "ambient": null,
-      "fmhub": null,
-      "stars": 0,
-      "talk": null,
-      "lic": "GPL-3.0",
-      "starsDay": null,
-      "site": "https://github.com/wellingtonsaam/fm1-pocket-tutor",
-      "version": null,
-      "date": null,
-      "published": null,
-      "pkg": null,
-      "product": null,
-      "size": null,
-      "sha256": null,
-      "release": null,
-      "tag": null,
-      "srcref": null,
-      "mirror": null,
-      "beta": null,
-      "hid": null,
-      "chip": null,
-      "base": null,
-      "dinghy": null,
-      "dinghyv": null,
-      "source": "https://github.com/wellingtonsaam/fm1-pocket-tutor",
-      "catalog_meta": {
-        "sources": [
-          "https://raw.githubusercontent.com/2bbb/fm1-firmware-collection/main/catalog/firmwares.json"
-        ],
-        "aliases": [],
-        "aroum": [],
-        "collection": [
-          {
-            "id": "wellingtonsaam__fm1-pocket-tutor",
-            "repo": "wellingtonsaam/fm1-pocket-tutor",
-            "url": "https://github.com/wellingtonsaam/fm1-pocket-tutor",
-            "description": "Study firmware for the M-VAVE FM-1: the keys light up to show where to play, with a lessons page in Chrome (Web MIDI). GPL-3.0.",
-            "sources": [
-              "search"
-            ],
-            "hub": null,
-            "license": "GPL-3.0",
-            "redistributable": true,
-            "fork_of": null,
-            "archived": false,
-            "stars": 0,
-            "pushed": "2026-11-23T05:03:17Z",
-            "branch": "main",
-            "head": "297e1a8f2b5a7b76a13606d76fce4a09c5c0508c",
-            "has_submodules": false,
-            "auto_recipe": "felucca",
-            "recipe": "felucca",
-            "prepare": null,
-            "upstream_releases": [
-              {
-                "tag": "v0.7",
-                "name": "fm1-pocket-tutor-0.7.fwsc",
-                "url": "https://github.com/wellingtonsaam/fm1-pocket-tutor/releases/download/v0.7/fm1-pocket-tutor-0.7.fwsc",
-                "size": 266094,
-                "prerelease": false,
-                "published": "2026-11-23T04:57:37Z"
-              },
-              {
-                "tag": "v0.2",
-                "name": "fm1-pocket-tutor-0.2.fwsc",
-                "url": "https://github.com/wellingtonsaam/fm1-pocket-tutor/releases/download/v0.2/fm1-pocket-tutor-0.2.fwsc",
-                "size": 266094,
-                "prerelease": false,
-                "published": "2026-11-22T00:55:43Z"
-              },
-              {
-                "tag": "v0.1",
-                "name": "fm1-pocket-tutor-0.1.fwsc",
-                "url": "https://github.com/wellingtonsaam/fm1-pocket-tutor/releases/download/v0.1/fm1-pocket-tutor-0.1.fwsc",
-                "size": 266094,
-                "prerelease": false,
-                "published": "2026-11-18T19:31:54Z"
-              }
-            ],
-            "tree_fwsc": [],
-            "has_build": true,
-            "needs_ci_build": false,
-            "buildable": true,
-            "path": "firmwares/wellingtonsaam/fm1-pocket-tutor",
             "status": "ok"
           }
         ]
@@ -49532,22 +49033,22 @@
       "https://raw.githubusercontent.com/aroum/fm1-custom-fw/main/README.md"
     ],
     "enrichment": "https://thefirmwarehub.com/catalog.json",
-    "hub_updated": "2026-11-23 12:49 UTC",
+    "hub_updated": "2026-11-24 13:13 UTC",
     "license_scope": "The top-level license is The Firmware Hub's attribution and applies to its list. Additional metadata retains its upstream terms; firmware licenses are in lic.",
     "aroum_scope": "Section 1, project links column only; includes platforms, games and binary patchers.",
     "deduplication": "Case-insensitive GitHub owner/repo; redirects for aroum repos absent from 2bbb. Forks remain separate; Hub variants are preserved under variants.",
     "counts": {
       "collection_rows": 906,
-      "aroum_rows": 264,
-      "aroum_repositories": 260,
-      "unique_repositories": 545,
-      "merged_rows": 254,
+      "aroum_rows": 266,
+      "aroum_repositories": 262,
+      "unique_repositories": 540,
+      "merged_rows": 255,
       "redirect_aliases": 7,
-      "added_from_aroum": 10,
-      "before_cleanup": 916,
-      "removed_by_cleanup": 371,
+      "added_from_aroum": 11,
+      "before_cleanup": 917,
+      "removed_by_cleanup": 377,
       "added_without_git": 19,
-      "total_firmwares": 564
+      "total_firmwares": 559
     },
     "aroum_without_git_repository": [],
     "unavailable_repositories": [
@@ -49566,6 +49067,10 @@
       "removed": [
         {
           "repo": "646timur-cell/pulhra_main",
+          "reason": "thefirmwarehub_repository"
+        },
+        {
+          "repo": "abektes/a22",
           "reason": "thefirmwarehub_repository"
         },
         {
@@ -50177,6 +49682,10 @@
           "reason": "thefirmwarehub_repository"
         },
         {
+          "repo": "josh-mcfarlin/boopbox",
+          "reason": "thefirmwarehub_repository"
+        },
+        {
           "repo": "joshbartlettband-web/felucca-rainbow",
           "reason": "thefirmwarehub_repository"
         },
@@ -50541,6 +50050,10 @@
           "reason": "thefirmwarehub_repository"
         },
         {
+          "repo": "r-jeb/rdpno-fm1",
+          "reason": "thefirmwarehub_repository"
+        },
+        {
           "repo": "r-jeb/setbfree-fm1",
           "reason": "thefirmwarehub_repository"
         },
@@ -50765,6 +50278,10 @@
           "reason": "thefirmwarehub_repository"
         },
         {
+          "repo": "track-forge/bgirl-fm1",
+          "reason": "thefirmwarehub_repository"
+        },
+        {
           "repo": "twochannels/cs-1",
           "reason": "thefirmwarehub_repository"
         },
@@ -50773,11 +50290,19 @@
           "reason": "thefirmwarehub_repository"
         },
         {
+          "repo": "virusiinstaller/nano-freak-fm1",
+          "reason": "thefirmwarehub_repository"
+        },
+        {
           "repo": "vlbrazhnikov/fm_labs",
           "reason": "same_head_as_thefirmwarehub_repository"
         },
         {
           "repo": "wav0902/wav-fm1",
+          "reason": "thefirmwarehub_repository"
+        },
+        {
+          "repo": "wellingtonsaam/fm1-pocket-tutor",
           "reason": "thefirmwarehub_repository"
         },
         {
