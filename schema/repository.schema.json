@@ -1,0 +1,150 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "FM-1 Firmware Repository v1",
+  "type": "object",
+  "required": ["schemaVersion", "repository", "updated", "projects"],
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": {"const": 1},
+    "repository": {
+      "type": "object",
+      "required": ["id", "name", "homepage"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {"$ref": "#/$defs/id"},
+        "name": {"$ref": "#/$defs/text"},
+        "homepage": {"$ref": "#/$defs/url"},
+        "metadataLicense": {"$ref": "#/$defs/text"}
+      }
+    },
+    "updated": {"type": "string", "format": "date-time"},
+    "projects": {"type": "array", "maxItems": 5000, "items": {"$ref": "#/$defs/project"}}
+  },
+  "$defs": {
+    "id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._-]{0,127}$"},
+    "text": {"type": "string", "minLength": 1, "maxLength": 16384},
+    "url": {"type": "string", "format": "uri", "pattern": "^https://", "maxLength": 4096},
+    "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "project": {
+      "type": "object",
+      "required": ["id", "name", "author", "summary", "categories", "links", "updated", "recommended", "releases"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {"$ref": "#/$defs/id"},
+        "name": {"$ref": "#/$defs/text"},
+        "author": {"$ref": "#/$defs/text"},
+        "summary": {"$ref": "#/$defs/text"},
+        "categories": {
+          "type": "array", "minItems": 1, "uniqueItems": true,
+          "items": {"enum": ["synth", "groove", "drums", "tracker", "chords", "dev", "stock", "other"]}
+        },
+        "links": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "site": {"$ref": "#/$defs/url"},
+            "card": {"$ref": "#/$defs/url"},
+            "editor": {"$ref": "#/$defs/url"},
+            "install": {"$ref": "#/$defs/url"},
+            "manual": {"$ref": "#/$defs/url"}
+          }
+        },
+        "license": {"$ref": "#/$defs/text"},
+        "updated": {"type": "string", "format": "date-time"},
+        "recommended": {
+          "type": ["object", "null"],
+          "required": ["release", "artifact"],
+          "additionalProperties": false,
+          "properties": {
+            "release": {"$ref": "#/$defs/text"},
+            "artifact": {"$ref": "#/$defs/id"}
+          }
+        },
+        "releases": {"type": "array", "maxItems": 5000, "items": {"$ref": "#/$defs/release"}},
+        "withdrawals": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["sha256", "reason", "withdrawnAt"],
+            "additionalProperties": false,
+            "properties": {
+              "sha256": {"$ref": "#/$defs/sha256"},
+              "reason": {"$ref": "#/$defs/text"},
+              "withdrawnAt": {"type": "string", "format": "date-time"}
+            }
+          }
+        },
+        "extensions": {"type": "object"}
+      }
+    },
+    "release": {
+      "type": "object",
+      "required": ["id", "version", "channel", "artifacts"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {"type": "string", "minLength": 1, "maxLength": 256},
+        "version": {"$ref": "#/$defs/text"},
+        "channel": {"enum": ["stable", "beta"]},
+        "publishedAt": {"type": "string", "format": "date-time"},
+        "notes": {"$ref": "#/$defs/text"},
+        "artifacts": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/artifact"}}
+      }
+    },
+    "artifact": {
+      "type": "object",
+      "required": ["id", "format", "url", "size", "sha256", "product", "legacyChip", "upstream", "mutable", "available"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {"$ref": "#/$defs/id"},
+        "format": {"const": "fwsc"},
+        "url": {"$ref": "#/$defs/url"},
+        "size": {"type": "integer", "minimum": 960, "maximum": 4194304},
+        "sha256": {"$ref": "#/$defs/sha256"},
+        "product": {"type": "string", "pattern": "^FM-1_[0-9]{1,16}$"},
+        "legacyChip": {"enum": ["unknown", "old", "new"]},
+        "mutable": {"type": "boolean"},
+        "available": {"type": "boolean"},
+        "evidence": {
+          "type": "array", "uniqueItems": true,
+          "items": {"$ref": "#/$defs/text"}
+        },
+        "inspection": {
+          "type": "object",
+          "required": ["checkedAt", "method"],
+          "additionalProperties": false,
+          "properties": {
+            "checkedAt": {"type": "string", "format": "date-time"},
+            "method": {"const": "fwsc-structure-crc"}
+          }
+        },
+        "upstream": {
+          "oneOf": [
+            {
+              "type": "object", "required": ["type", "repository", "tag", "assetId"],
+              "additionalProperties": false,
+              "properties": {
+                "type": {"const": "github-release"},
+                "repository": {"type": "string", "pattern": "^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$"},
+                "tag": {"$ref": "#/$defs/text"},
+                "assetId": {"type": "string", "pattern": "^[0-9]+$"}
+              }
+            },
+            {
+              "type": "object", "required": ["type"], "additionalProperties": false,
+              "properties": {
+                "type": {"const": "direct"},
+                "commit": {"$ref": "#/$defs/text"}
+              }
+            }
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"legacyChip": {"enum": ["old", "new"]}}},
+          "then": {"required": ["evidence"], "properties": {"evidence": {"minItems": 1}}}
+        }
+      ]
+    }
+  }
+}

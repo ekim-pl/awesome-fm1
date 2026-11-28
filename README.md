@@ -36,12 +36,14 @@ This repository stores metadata, not firmware binaries. Packages remain hosted b
 
 Choose the combined catalog for a single endpoint, or subscribe to individual publisher catalogs:
 
-- [catalog.json](catalog.json): the combined catalog, generated from `catalogs/*.json`. Recommended single endpoint: <https://raw.githubusercontent.com/ekim-pl/awesome-fm1/main/catalog.json>.
+- [catalog.json](catalog.json): the combined catalog, generated from reviewed records under `projects/`. Recommended single endpoint: <https://raw.githubusercontent.com/ekim-pl/awesome-fm1/main/catalog.json>.
 - [catalogs/shrub.json](catalogs/shrub.json): a standalone publisher catalog in the same format. Alternative endpoint: <https://raw.githubusercontent.com/ekim-pl/awesome-fm1/main/catalogs/shrub.json>.
 - [catalogs/sloop.json](catalogs/sloop.json): the standalone SLOOP catalog. Endpoint: <https://raw.githubusercontent.com/ekim-pl/awesome-fm1/main/catalogs/sloop.json>.
 - [catalogs/choralroot.json](catalogs/choralroot.json): the standalone ChoralRoot catalog. Endpoint: <https://raw.githubusercontent.com/ekim-pl/awesome-fm1/main/catalogs/choralroot.json>.
 
 Use the combined catalog **or** selected individual catalogs. Subscribing to both creates overlapping offers; clients must not merge projects by name or device identity.
+
+Once signed publishing is configured, GitHub Releases provides the [latest signed snapshot](https://github.com/ekim-pl/awesome-fm1/releases/latest/download/entry.json) for clients that support repository signatures. Each catalog release also includes the generated `catalog.json` for legacy clients. See the [repository guide](docs/firmware-repository.md#publish-a-signed-repository) for setup and verification.
 
 FM-1 Flasher includes The Firmware Hub and Awesome FM-1 as built-in sources (Hub enabled and Awesome FM-1 disabled by default), and supports custom JSON catalog subscriptions. The `third-party` discovery feed is separate and is not compatible with the app’s catalog importer.
 
@@ -51,7 +53,7 @@ SHRUB is currently listed with `chip: "unknown"`. Its package passed the Android
 
 [third-party/catalog.json](third-party/catalog.json) is an automatically refreshed discovery list, separate from the reviewed firmware directory above. Candidate projects come from [2bbb's firmware collection](https://github.com/2bbb/fm1-firmware-collection) and the firmware section of [aroum's directory](https://github.com/aroum/fm1-custom-fw).
 
-The main [catalog.json](catalog.json) is generated only from `catalogs/*.json`. Its builder never reads `third-party/`, so this discovery list cannot add entries to or change the main catalog. The entries above are separately reviewed entries in the main catalog. This separation is checked by the catalog tests.
+The main [catalog.json](catalog.json) is generated only from reviewed project records under `projects/`. Its builder never reads `third-party/`, so this discovery list cannot add entries to or change the main catalog. The entries above are separately reviewed entries in the main catalog. This separation is checked by the catalog tests.
 
 Entries are unreviewed and may describe other devices, tools, unavailable projects or works in progress. Missing metadata remains null. It does **not** satisfy the installation catalog schema; do not use it by itself to authorize downloads or flashing.
 
@@ -75,7 +77,7 @@ Build locally with `python3 scripts/build_site.py`; output goes to `_site/`. Tra
 
 ## Contributing
 
-Contributions can start with a link; maintainers can help with the catalog details.
+Open a **Suggest a firmware project** issue with the publisher link, or submit a pull request. Maintainers can help with the catalog details.
 
 ### Submit a firmware source
 
@@ -102,23 +104,13 @@ Contributions can start with a link; maintainers can help with the catalog detai
 
 Provide at least one publicly accessible HTTPS package or repository URL. A repository URL is sufficient for proposing a project, even if it does not yet publish a downloadable package. Clearly label projects without installable releases. Do not commit firmware binaries.
 
-**Complete catalog submission:** add or update a publisher file in `catalogs/`, using [catalogs/shrub.json](catalogs/shrub.json) and the [schema](schema/catalog.schema.json) as references. Include verification notes in `docs/` when introducing a package or changing its hash or compatibility claims. Regenerate `catalog.json` and run the checks below before opening your PR.
+**Complete catalog submission:** add or update a reviewed record in `projects/`, using [projects/shrub.json](projects/shrub.json) and the [repository schema](schema/repository.schema.json) as references. Include verification notes in `docs/` when introducing a package or changing its hash or compatibility claims. Regenerate the legacy exports and run the checks below before opening your PR.
 
 ### Catalog entry requirements
 
-| Field | Contribution guidance |
-| --- | --- |
-| `id` | Stable, descriptive ID, unique across all component catalogs. Keep it unchanged when updating a release. |
-| `name`, `author`, `what` | Project name, credited publisher, and a concise factual description. |
-| `pkg` | Publisher-hosted package URL. Prefer an absolute HTTPS URL for a specific release. Disclose mutable download URLs. |
-| `repo` | For GitHub projects, use `owner/repository`, not the full URL. Use `null` for direct downloads without a GitHub repository. Include other repository URLs in the proposal or verification notes. |
-| `tag`, `asset` | Exact GitHub release tag and numeric release asset ID when applicable; use `null` for direct downloads. |
-| `version`, `site`, `beta` | Published version, official project page, and accurate beta status. Do not invent a version or release date. |
-| `sha256`, `size` | Lowercase SHA-256 and byte size of the exact package reviewed. Record the download URL and UTC observation time in verification notes. |
-| `product` | Identity observed in the package, in the form `FM-1_<number>`. Do not guess it or treat it as a unique project ID. |
-| `chip` | Supported hardware only when backed by evidence; otherwise use `unknown`. |
+Keep the project ID stable and record its publisher, description and links. For an installable release, include the exact publisher asset URL, SHA-256, byte size, observed FM-1 product ID, release channel and verification evidence. For GitHub assets include the owner/repository, release tag and numeric asset ID. Use `legacyChip: "unknown"` until there is hardware evidence for the exact package.
 
-A hash records which bytes were reviewed; it does not prove publisher authenticity or hardware compatibility. Distinguish package parsing from actual installation tests. For hardware test reports, record the firmware hash, device/flash variant, procedure, and observed result. Contributions do not require flashing a device.
+A hash records which bytes were reviewed. Distinguish package inspection from hardware installation evidence. See the [repository guide](docs/firmware-repository.md#contribute-a-project-or-release) for recommended releases, availability and withdrawals.
 
 ### Project guidelines
 
@@ -132,25 +124,19 @@ A hash records which bytes were reviewed; it does not prove publisher authentici
 
 ## Format and maintenance
 
-Each catalog has `updated` and `firmwares`, with the existing Hub fields such as `id`, `name`, `repo`, `tag`, `asset`, `pkg`, `sha256`, `product`, `chip`, `site` and `beta`. `repo` may be null for direct publisher downloads. Clients must explicitly support this profile; compatibility with every existing Hub client is not implied.
+Edit the reviewed records under `projects/`. GitHub Actions checks the records, prepares candidate publisher updates and publishes the [versioned repository](docs/firmware-repository.md). The separate [FM-1 Flasher integration plan](docs/android-fm1-flasher-repository-plan.md) covers signed subscriptions and migration of existing app data.
 
-`pkg` may be an absolute HTTPS URL or a relative path resolved against the source's configured base URL. A Hub subscription must still download from publishers, not the Hub's mirrors, in accordance with [its catalog usage terms](https://thefirmwarehub.com/kb/#catalog).
-
-[schema/catalog.schema.json](schema/catalog.schema.json) documents the profile used by these catalogs. It permits additional upstream fields. [config/app-source-presets.json](config/app-source-presets.json) is a separate integration specification for the app's built-in sources; it is not a firmware catalog and does not change the app by itself.
-
-To edit a catalog:
+Run these commands before submitting a change.
 
 ```sh
 python3 -m venv .venv
 .venv/bin/python -m pip install -r requirements-dev.txt
-.venv/bin/python scripts/catalog.py
-.venv/bin/python scripts/catalog.py --check
+.venv/bin/python scripts/repository.py
+.venv/bin/python scripts/repository.py --check
 .venv/bin/python -m unittest discover -s tests -v
 ```
 
-Edit the individual catalog first, including its actual UTC update time. The builder produces the aggregate deterministically and takes its timestamp from the newest component. CI validates structure, duplicate IDs and aggregate consistency without contacting publishers. It does not verify downloaded firmware or prove hardware compatibility.
-
-New providers, hosts, hashes and compatibility claims require review. Never change an expected hash merely to make a failed download pass. The separate third-party workflow performs scheduled discovery; package validation and catalog signing are not implemented. Published catalogs are currently served over HTTPS without a detached signature.
+The [legacy catalog schema](schema/catalog.schema.json) still applies to the generated `catalog.json` and `catalogs/*.json` exports used by current flasher builds. The Hub's package rules remain specific to that source. [Hub catalog terms](https://thefirmwarehub.com/kb/#catalog)
 
 ## Attribution
 
